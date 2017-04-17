@@ -190,14 +190,15 @@ image:wechat-verifyUrl.png[wechat-verifyUrl]
 
 [source, xml,linenums]
 ----
-<flow name="wechat-verifyUrl">
-  <http:listener config-ref="HTTP_Listener_Configuration" path="/message" doc:name="HTTP"/>
-  <choice doc:name="Choice">
+<flow name="wechat-autoReplyEncryptedMessages">
+  <http:listener config-ref="HTTP_Listener_Configuration" path="/msg" doc:name="HTTP"/>
+  <choice doc:name="Check &quot;echostr&quot;">
     <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
-      <wechat:verify-url config-ref="Wechat__Configuration" doc:name="Wechat URL"/>
+      <wechat:verify-url config-ref="Wechat__Configuration" doc:name="Wechat verifyUrl"/>
+      <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </when>
     <otherwise>
-      <logger message="#[payload]#" level="INFO" doc:name="Logger"/>
+      <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </otherwise>
   </choice>
 </flow>
@@ -251,6 +252,7 @@ image:wechat-autoReplyEncryptedMessages.png[wechat-autoReplyEncryptedMessages]
   <choice doc:name="Check &quot;echostr&quot;">
     <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
       <wechat:verify-url config-ref="Wechat__Configuration" doc:name="Wechat verifyUrl"/>
+      <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </when>
     <otherwise>
       <wechat:message-decryption config-ref="Wechat__Configuration" doc:name="Wechat messageDecryption" encodingAesKey="UcNGigaETbwSX4neAykOm8YAPQyRGDXtZziW5llbeYI" />
@@ -315,9 +317,29 @@ image:wechat-getAccessToken.png[wechat-getAccessToken]
 [source, xml,linenums]
 ----
 <flow name="wechat-getAccessToken">
-  <wechat:get-access-token config-ref="Wechat__Configuration" pollingPeriod="6600000" doc:name="Wechat getAccessToken"/>
-  <component doc:name="Java Set Access Token" class="CustomClass.setToken(#[payload.access_token])"/>
+  <wechat:get-access-token config-ref="Wechat__Configuration"  doc:name="Wechat getAccessToken"/>
+  <set-payload value="#[common.CustomClass.setToken(payload.access_token)]" doc:name="Java Set Access Token"/>
+  <logger message="#[common.CustomClass.getToken()]" level="INFO" doc:name="Logger"/>
 </flow>
+----
+
+image:wechat-customClass.png[wechat-customClass]
+
+[source, Java,linenums]
+----
+package common;
+
+public class CustomClass {
+  static private String token;
+
+  public static String getToken() {
+    return token;
+  }
+
+  public static void setToken(String token) {
+    CustomClass.token = token;
+  }
+}
 ----
 
 In each operation which needs access token to request wechat API, there is *Access Token* in *Anvanced* for you to input to access token you just poll.
