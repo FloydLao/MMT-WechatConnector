@@ -1,0 +1,99 @@
+////
+The following is the approved connector release notes template for documenting MuleSoft Supported Connectors.
+////
+
+= Wechat Connector Release Notes
+////
+[<System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials]
+////
+:keywords: add_keywords_separated_by_commas
+
+
+WeChat is a Chinese social messaging application focus on international markets outside of China
+and was first released in 2011.
+
+. Connect and management to WeChat users via a special account.
+. Publish articles and media to be sent to your users.
+. Messages and user events can be passed off to your server to formulate a response.
+
+link:/wechat-connector[Wechat Connector User Guide]
+////
+Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.8/connector-x[Connector X User Guide]
+////
+
+== V1.0 - 2017/05/04
+////
+<Connector_Version> : Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release]
+<Release_date> : The date on which the connector is released (not when the notes are written, mind you)
+////
+
+=== Version V1.0  Compatibility
+
+[%header%autowidth]
+|===
+|Software |Version
+|Anypoint Studio  |3.8
+|Mule Runtime |EE 3.8.0 and above
+|Java |JDK 8 and above
+|===
+
+=== Features
+
+. Message decryption - Authenticate message validity and obtain decrypted message. 
+. Message encrytion - Encrypt a reply message from an official account 
+. Upload image file - Upload Temporary Image Material 
+. Upload voice file - Upload Temporary Voice Material
+. Upload video file - Upload Temporary Video Material
+. Upload thumb file - Upload Temporary Thumb Material
+. Obtain multimedia file - Obtaining Multimedia Files 
+. Customer text message - Send Customer Text Message to OpenId 
+. Customer image message - Send Customer Image Message to OpenId 
+. Customer audio message - Send Customer Audio Message to OpenId 
+. Customer video message - Send Customer Video Message to OpenId
+. Customer music message - Send Customer Music Message to OpenId 
+. Customer rich media message - Send Customer Rich Media Message to OpenId 
+. Upload article message data - Upload Article Message Data 
+. Group based broadcast article - Group-Based Broadcast Article 
+. Group based broadcast text - Group-Based Broadcast Text
+. Group based broadcast voice - Group-Based Broadcast Voice 
+. Group based broadcast image - Group-Based Broadcast Image 
+. Group based broadcast video - Group-Based Broadcast Video 
+. Open id list broadcast article - OpenID List-Based Broadcast Article 
+. Open id list broadcast text - OpenID List-Based Broadcast Text 
+. Open id list broadcast voice - OpenID List-Based Broadcast Voice 
+. Open id list broadcast image - OpenID List-Based Broadcast Image 
+. Open id list broadcast video - OpenID List-Based Broadcast Video 
+. Delete broadcast message - Broadcast Message Deletion
+. Preview broadcast article - Send Preview Broadcast Article to OpenId 
+. Preview broadcast text - Send Preview Broadcast Text to OpenId 
+. Preview broadcast voice - Send Preview Broadcast Voice to OpenId 
+. Preview broadcast image - Send Preview Broadcast Image to OpenId 
+. Preview broadcast video - Send Preview Broadcast Video to OpenId 
+. Query broadcast status - Query Message Sending Status 
+. Get follower list - Get Follower List 
+. Get user profile - Get User Profile 
+. Create tag - Create Tag 
+. Query tags - Query Tags
+. Editing tag - Editing Tag 
+. Deleting tag - Deleting Tag 
+. Obtain followers with tag - Obtaining the List of Followers Configured with a Tag 
+. Batch tag followers - Configuring Tags for Users in Batches
+. Batch untag followers - UnTags for Users in Batches 
+. Obtain follower tags - Obtaining the List of Tags Configured for a User 
+. Name remark - Set name remarks for specified users
+. Obtain blacklist - Obtaining the Blacklist of an Official Account 
+. Blacklist followers - Blacklist Followers 
+. Unblacklist followers - Unblacklist Followers 
+. Get access token - Get Access Token 
+
+//Example of a Feature listing:
+
+//NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations.
+
+=== Support Resources
+////
+could also be named See Also
+////
+* Learn how to link:/mule-user-guide/v/3.8/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
+* Access the link:http://forum.mulesoft.org/mulesoft[MuleSoft Forum] to pose questions and get help from Mule’s broad community of users.
+* To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].

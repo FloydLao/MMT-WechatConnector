@@ -1,0 +1,2 @@
+cd Documents\mmt-wechatconnector\doc
+asciidoctor-pdf user-manual.adoc

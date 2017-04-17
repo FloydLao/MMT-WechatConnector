@@ -1,0 +1,357 @@
+////
+The following is the approved connector user guide template for documenting MuleSoft Supported Connectors.
+////
+
+= Wechat
+:keywords: add_keywords_separated_by_commas
+:imagesdir: ./_images
+:toc: macro
+:toclevels: 2
+////
+Image names follow "image:". Identify images using the connector name, preferably without the word "connector"
+URLs should always follow "link:"
+////
+
+// Dropdown for Connector Version
+//  Children: Technical Reference / Demos
+
+toc::[]
+
+
+== What is the Wechat?
+  
+WeChat is a Chinese social messaging application focus on international markets outside of China and was first released in 2011.
+
+. Connect and management to WeChat users via a special account.
+. Publish articles and media to be sent to your users.
+. Messages and user events can be passed off to your server to formulate a response.
+//Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
+
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[ Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
+
+MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[_Insert Category_] support policy.
+
+
+== Prerequisites
+
+This document assumes that you are familiar with Wechat API. To use this connector you need the following:
+
+. Verified Wechat Service account
+
+
+[[requirements]]
+=== Hardware and Software Requirements
+
+For hardware and software requirements, please visit the link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
+
+
+
+=== Compatibility
+
+The Wechat connector requires the following dependencies:
+
+[%header,cols="50a,50a"]
+|===
+|Application/Service |Version
+|*Anypoint Studio* |3.8
+|*Mule Runtime* |EE 3.8.0 and above
+|*Java* |JDK 8 and above
+
+|===
+
+
+== How to Install
+
+You can install the connector in Anypoint Studio using the instructions in
+link:/getting-started/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
+
+=== Upgrading from an Older Version
+
+If you are currently using an older version of the connector, a small popup appears in the bottom right corner of Anypoint Studio with an "Updates Available" message.
+
+. Click the popup and check for available updates.
+. Click the Connector version checkbox and click *Next* and follow the instructions provided by the user interface.
+. *Restart* Studio when prompted.
+. After restarting, when creating a flow and using the connector, if you have several versions of the connector installed, you may be asked which version you would like to use. Choose the version you would like to use.
+
+Additionally, we recommend that you keep Studio up to date with its latest version.
+
+== How to Configure
+
+To use the Wechat connector in your Mule application, you must configure a global Wechat element that can be used by the Wechat connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The Wechat connector offers the following global configuration(s), requiring the following credentials: *AppId*, *AppSecret*, *Token*
+
+[%header,cols="50a,50a"]
+|===
+|Field |Description
+|*AppId* |The unique certificate of a official account.
+|*AppSecret* |The key of a official account's certificate.
+|*Token* |Token set by the developer on the WeChat Official Account Admin Platform.
+
+|===
+
+image:wechat-global-element-props.png[wechat-config]
+
+=== Required Connector Namespace and Schema
+
+When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
+
+[%hardbreaks]
+*Namespace:* `http://www.mulesoft.org/schema/mule/wechat`
+*Schema Location:* `http://www.mulesoft.org/schema/mule/wechat/current/mule-wechat.xsd`
+
+[TIP]
+If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
+
+[source, xml,linenums]
+----
+<mule xmlns:wechat="http://www.mulesoft.org/schema/mule/wechat" 
+      xmlns="http://www.mulesoft.org/schema/mule/core" 
+      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns:spring="http://www.springframework.org/schema/beans" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+              http://www.springframework.org/schema/beans 
+              http://www.springframework.org/schema/beans/spring-beans-current.xsd 
+              http://www.mulesoft.org/schema/mule/core 
+              http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
+              http://www.mulesoft.org/schema/mule/wechat 
+              http://www.mulesoft.org/schema/mule/wechat/current/mule-wechat.xsd">
+
+      <!-- put your global configuration elements and flows here -->
+
+</mule>
+----
+
+
+=== Maven Dependency Information
+
+Maven is backing the application, this XML snippet must be included in your `pom.xml` file.
+
+[source,xml,linenums]
+----
+<dependency>
+  <groupId>commons-codec</groupId>
+  <artifactId>commons-codec</artifactId>
+  <version>1.9</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.httpcomponents</groupId>
+  <artifactId>httpmime</artifactId>
+  <version>4.5.3</version>
+</dependency>
+<dependency>
+  <groupId>org.apache.tika</groupId>
+  <artifactId>tika-core</artifactId>
+  <version>1.14</version>
+</dependency>
+----
+
+[TIP]
+====
+Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version. The available versions to date are:
+
+* *x.y.z*
+====
+
+
+== Operations
+
+Message decryption, message encrytion, upload multimedia file, customer message, group based broadcast, open id list broadcast, delete broadcast, preview broadcast, query broadcast status, get follower list, get user profile, tag, name remark, blacklist, get access token  +
+
+[NOTE]
+See a full list of operations for any version of the connector link:[here].
+
+
+== Common Use Cases
+
+* link:#use-case-1[Verify validity of the URL]
+* link:#use-case-2[Auto-Reply Encrypted Messages]
+* link:#use-case-3[Upload Image Material]
+* link:#use-case-4[Manage Access Token]
+* link:#use-case-5[Operation with Mule DataSense]
+
+[use-case-1]
+=== Verify validity of the URL
+Log in to the WeChat Official Account Admin Platform, after the server configuration is submitted, the WeChat Official Account System will send a GET request to the entered URL pointing to developer's backend. The GET request contains the following parameters:
+
+[%header,cols="30a,70a"]
+|===
+|Parameter |Description
+|*signature* |Encrypted signature. This parameter is combined with the Token entered and timestamp and nonce parameters in the request.
+|*timestamp* |Time stamp
+|*nonce* |Random number
+|*echostr* |Random string
+
+|===
+
+Once <wechat:verify-url> confirmed that the GET request has been sent by the WeChat Official Account System and verify the signature, the <wechat:verify-url> should return the echostr parameter value indicating that the request has been successfully received; otherwise, access fails.
+
+image:wechat-verifyUrl.png[wechat-verifyUrl]
+
+[source, xml,linenums]
+----
+<flow name="wechat-verifyUrl">
+  <http:listener config-ref="HTTP_Listener_Configuration" path="/message" doc:name="HTTP"/>
+  <choice doc:name="Choice">
+    <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
+      <wechat:verify-url config-ref="Wechat__Configuration" doc:name="Wechat URL"/>
+    </when>
+    <otherwise>
+      <logger message="#[payload]#" level="INFO" doc:name="Logger"/>
+    </otherwise>
+  </choice>
+</flow>
+----
+
+[use-case-2]
+=== Auto-Reply Encrypted Messages
+After encryption/decryption is enabled (i.e. compatibility mode or security mode is selected), new parameters (encryption type and message signature) will appear in the URL to reflect the new settings. When a WeChat user sends a message to an Official Account, the WeChat Official Account Admin System POSTs an XML data package to the URL provided by the developer.
+
+[source, xml,linenums]
+----
+<xml>
+  <ToUserName><![CDATA[gh_10f6c3c3ac5a]]></ToUserName>
+  ……
+  <Encrypt><![CDATA[hQM/NS0ujPGbF+/8yVe61E3mUVWVO1izRlZdyv26zrVUSE3zUEBdcXITxjbjiHH38kexVdpQLCnRfbrqny1yGvgqqKTGKxJWWQ9D5WiiUKxavHRNzYVzAjYkp7esNGy7HJcl/P3BGarQF3+AWyNQ5w7xax5GbOwiXD54yri7xmNMHBOHapDzBslbnTFiEy+8sjSl4asNbn2+ZVBpqGsyKDv0ZG+DlSlXlW+gNPVLP+YxeUhJcyfp91qoa0FJagRNlkNul4mGz+sZXJs0WF7lPx6lslDGW3J66crvIIx/klpl0oa/tC6n/9c8OFQ9pp8hrLq7B9EaAGFlIyz5UhVLiWPN97JkL6JCfxVooVMEKcKRrrlRDGe8RWVM3EW/nxk9Ic37lYY5j97YZfq375AoTBdGDtoPFZsvv3Upyut1i6G0JRogUsMPlyZl9B8Pl/wcA7k7i4LYMr2yK4SxNFrBUw==]]></Encrypt>
+</xml>
+----
+
+Past it and URI to <wechat:message-decryption>, URI parameters should contain: msg_signature (note that it is msg_signature, not signature), timestamp, and nonce as well as encrypt_msg. If it proccess successful, sMsg will be returned, containing the following XML content in plaintext format:
+
+[source, xml,linenums]
+----
+<xml>
+  <ToUserName><![CDATA[gh_10f6c3c3ac5a]]></ToUserName>
+  <FromUserName><![CDATA[oyORnuP8q7ou2gfYjqLzSIWZf0rs]]></FromUserName>
+  <CreateTime>1411035097</CreateTime>
+  <MsgType><![CDATA[text]]></MsgType>
+  <Content><![CDATA[this is a test message]]></Content>
+  <MsgId>6060349595123187712</MsgId>
+</xml>
+----
+
+Use <wechat:message-encrytion> to encrypt the reply message. If encryption succeeds, sEncryptMsg is an encrypted message, as shown below:
+
+[source, xml,linenums]
+----
+<xml>
+  <Encrypt><![CDATA[LDFAmKFr7U/RMmwRbsR676wjym90byw7+hhh226e8bu6KVYy00HheIsVER4eMgz/VBtofSaeXXQBz6fVdkN2CzBUaTtjJeTCXEIDfTBNxpw/QRLGLqqMZHA3I+JiBxrrSzd2yXuXst7TdkVgY4lZEHQcWk85x1niT79XLaWQog+OnBV31eZbXGPPv8dZciKqGo0meTYi+fkMEJdyS8OE7NjO79vpIyIw7hMBtEXPBK/tJGN5m5SoAS6I4rRZ8Zl8umKxXqgr7N8ZOs6DB9tokpvSl9wT9T3E62rufaKP5EL1imJUd1pngxy09EP24O8Th4bCrdUcZpJio2l11vE6bWK2s5WrLuO0cKY2GP2unQ4fDxh0L4ePmNOVFJwp9Hyvd0BAsleXA4jWeOMw5nH3Vn49/Q/ZAQ2HN3dB0bMA+6KJYLvIzTz/Iz6vEjk8ZkK+AbhW5eldnyRDXP/OWfZH2P3WQZUwc/G/LGmS3ekqMwQThhS2Eg5t4yHv0mAIei07Lknip8nnwgEeF4R9hOGutE9ETsGG4CP1LHTQ4fgYchOMfB3wANOjIt9xendbhHbu51Z4OKnA0F+MlgZomiqweT1v/+LUxcsFAZ1J+Vtt0FQXElDKg+YyQnRCiLl3I+GJ/cxSj86XwClZC3NNhAkVU11SvxcXEYh9smckV/qRP2Acsvdls0UqZVWnPtzgx8hc8QBZaeH+JeiaPQD88frNvA==]]></Encrypt>
+  <MsgSignature><![CDATA[8d9521e63f84b2cd2e0daa124eb7eb0c34b6204a]]></MsgSignature>
+  <TimeStamp>1411034505</TimeStamp>
+  <Nonce><![CDATA[1351554359]]></Nonce>
+</xml>
+----
+
+image:wechat-autoReplyEncryptedMessages.png[wechat-autoReplyEncryptedMessages]
+
+[source, xml,linenums]
+----
+<flow name="wechat-autoReplyEncryptedMessages">
+  <http:listener config-ref="HTTP_Listener_Configuration" path="/message" doc:name="HTTP"/>
+  <choice doc:name="Check &quot;echostr&quot;">
+    <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
+      <wechat:verify-url config-ref="Wechat__Configuration" doc:name="Wechat verifyUrl"/>
+    </when>
+    <otherwise>
+      <wechat:message-decryption config-ref="Wechat__Configuration" doc:name="Wechat messageDecryption" encodingAesKey="UcNGigaETbwSX4neAykOm8YAPQyRGDXtZziW5llbeYI" />
+      <logger message="#[payload]#" level="INFO" doc:name="Keyword Matching"/>
+      <dw:transform-message doc:name="Transform Message">
+        <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+---
+{
+  xml: {
+    ToUserName: "oUasjhdf83LHF92jshfKJ_8CCdlU" as :cdata,
+    FromUserName: "gh_a8dc7dfb8bd9" as :cdata,
+    CreateTime: 1489683323,
+    MsgType: "text" as :cdata,
+    Content: "Hello World!" as :cdata,
+    FuncFlag: 0
+  }
+}]]></dw:set-payload>
+      </dw:transform-message>
+      <wechat:message-encrytion config-ref="Wechat__Configuration" encodingAesKey="UcNGigaETbwSX4neAykOm8YAPQyRGDXtZziW5llbeYI" doc:name="Wechat messageEncrytion"/>
+    </otherwise>
+  </choice>
+</flow>
+----
+
+[use-case-3]
+=== Upload Image Material
+Use <wechat:upload-image-file> to upload image files to the WeChat server. The system then returns a corresponding media ID that enables official accounts to obtain multimedia files. An example of a successful JSON response is as follows:
+
+[source, xml,linenums]
+----
+{
+  "type":"TYPE",
+  "media_id":"MEDIA_ID",
+  "created_at":123456789
+}
+----
+
+Note that multimedia files are removed from the WeChat server after three days to recycle space.
+
+image:wechat-uploadImageFile.png[wechat-uploadImageFile]
+
+[source, xml,linenums]
+----
+<flow name="wechat-uploadImageFile">
+  <http:listener config-ref="HTTP_Listener_Configuration" path="/file" doc:name="HTTP"/>
+  <wechat:upload-image-file config-ref="Wechat__Configuration" doc:name="Wechat uploadImageFile"/>
+  <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+</flow>
+----
+
+[use-case-4]
+=== Manage Access Token
+By default, Wechat connector is handling access token for you. If you want to manage it by yourself, select *Self Manage Access Token* in Wechat *Advanced* global configuration.
+
+image:wechat-global-accessToken.png[wechat-accessToken]
+
+And use <wechat:get-access-token> to poll access token periodically, and then you can save it using java, database...
+
+image:wechat-getAccessToken.png[wechat-getAccessToken]
+
+[source, xml,linenums]
+----
+<flow name="wechat-getAccessToken">
+  <wechat:get-access-token config-ref="Wechat__Configuration" pollingPeriod="6600000" doc:name="Wechat getAccessToken"/>
+  <component doc:name="Java Set Access Token" class="CustomClass.setToken(#[payload.access_token])"/>
+</flow>
+----
+
+In each operation which needs access token to request wechat API, there is *Access Token* in *Anvanced* for you to input to access token you just poll.
+
+image:wechat-operationAccessToken.png[wechat-operationAccessToken]
+
+[use-case-5]
+=== Operation with Mule DataSense
+Some of the input structure of wechat API is complicated. Like <wechat:open-id-list-broadcast-text>, it split into two field and one of the field is mapping metadata using Mule DataSense.
+
+image:wechat-openIdListBroadcastText.png[wechat-openIdListBroadcastText]
+image:wechat-operationDataSense.png[wechat-operationDataSense]
+image:wechat-transformerDataSense.png[wechat-transformerDataSense]
+
+[source, xml,linenums]
+----
+<flow name="wechat-openIdListBroadcastText">
+  <http:listener config-ref="HTTP_Listener_Configuration" path="/broadcast" doc:name="HTTP"/>
+  <dw:transform-message doc:name="Transform Message">
+    <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+  touser: [
+    "oU9iasidjJUIWEHDD-v42bXdaAoU",
+    "oUcjvhq9qDJSIUwDqQWjq_8BBPlU"
+  ]
+}]]></dw:set-payload>
+  </dw:transform-message>
+  <wechat:open-id-list-broadcast-text config-ref="Wechat__Configuration" ApiName="OpenIDListBroadcastText" content="TestContent" doc:name="Wechat openIdListBroadcastText"/>
+  <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+</flow>
+----
+
+== Resources
+
+* Access the link:/release-notes/wechat-connector-release-notes[Wechat Connector Release Notes].

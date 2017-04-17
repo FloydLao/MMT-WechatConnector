@@ -1,0 +1,9 @@
+<!-- BEGIN_INCLUDE(wechat:greet) -->
+    <wechat:greet config-ref="" friend="#[map-payload:friend]" />
+<!-- END_INCLUDE(wechat:greet) -->
+<!-- BEGIN_INCLUDE(wechat:query-processor) -->
+    <wechat:query-processor config-ref="" query="SELECT fieldName FROM MY_TABLE" />
+<!-- END_INCLUDE(wechat:query-processor) -->
+<!-- BEGIN_INCLUDE(wechat:add-entity) -->
+    <wechat:add-entity config-ref="" key="id1"/>
+<!-- END_INCLUDE(wechat:add-entity) -->
