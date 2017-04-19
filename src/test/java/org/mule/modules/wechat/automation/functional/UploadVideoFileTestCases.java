@@ -10,8 +10,6 @@ import org.junit.Test;
 import org.mule.modules.wechat.WechatConnector;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
-import custom.VideoDataSource;
-
 public class UploadVideoFileTestCases extends AbstractTestCase<WechatConnector> {
 
 	public UploadVideoFileTestCases() {

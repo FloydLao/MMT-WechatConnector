@@ -10,8 +10,6 @@ import org.junit.Test;
 import org.mule.modules.wechat.WechatConnector;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
-import custom.MusicDataSource;
-
 public class UploadVoiceFileTestCases extends AbstractTestCase<WechatConnector> {
 
 	public UploadVoiceFileTestCases() {
