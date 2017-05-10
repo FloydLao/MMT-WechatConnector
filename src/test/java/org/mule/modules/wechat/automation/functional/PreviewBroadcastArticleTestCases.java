@@ -29,8 +29,8 @@ public class PreviewBroadcastArticleTestCases extends AbstractTestCase<WechatCon
 		expected.put("errcode", 0);
 		expected.put("errmsg", "preview success");
 		java.lang.String accessToken = null;
-		java.lang.String toUser = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
-		java.lang.String mediaId = "pjvRfkQdW9p998FHu--quYBS94plUt_hcySfamHZsto";
+		java.lang.String toUser = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
+		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXIs9NJG_saO9m0yrn1cOc3Po";
 		assertEquals(getConnector().previewBroadcastArticle(accessToken, toUser, mediaId), expected);
 	}
 

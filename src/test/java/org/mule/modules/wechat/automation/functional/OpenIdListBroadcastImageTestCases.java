@@ -30,10 +30,10 @@ public class OpenIdListBroadcastImageTestCases extends AbstractTestCase<WechatCo
 		expected.put("errmsg", "send job submission success");
 		expected.put("msg_id", "3147483650");
 		java.lang.String accessToken = null;
-		java.lang.String mediaId = "pjvRfkQdW9p998FHu--quYihqJqJ8hv9buhFh_h83O8";
+		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXItelK7mP9sLc1XuiFWIDzEs";
 		java.lang.String ApiName = "OpenIDListBroadcastImage";
 		java.util.Map<java.lang.String, java.lang.Object> toUser = new java.util.HashMap<String, Object>();
-		toUser.put("touser", java.util.Arrays.asList("oU1fjv8UyBAxWqlGAExjW_8HHPlU","oU1fjv9f3ddlyF3V1OpYgQGcQgyI"));
+		toUser.put("touser", java.util.Arrays.asList("oRwGLwz_vjiN-rogxjjUoSzfPzWs","oRwGLwzaDc9z6IRhMyfBtjWs_mao"));
 		assertEquals(getConnector().openIdListBroadcastImage(accessToken, mediaId, ApiName, toUser).get("errcode"), expected.get("errcode"));
 	}
 

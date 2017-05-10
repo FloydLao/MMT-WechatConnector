@@ -29,7 +29,7 @@ public class CustomerTextMessageTestCases extends AbstractTestCase<WechatConnect
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
 		java.lang.String content = "Customer Content";
 		assertEquals(getConnector().customerTextMessage(accessToken, openId, content), expected);
 	}

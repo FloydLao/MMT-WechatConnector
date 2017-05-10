@@ -54,23 +54,24 @@ import org.mule.modules.wechat.automation.functional.UploadVideoFileTestCases;
 import org.mule.modules.wechat.automation.functional.UploadVoiceFileTestCases;
 
 @RunWith(Suite.class)
-@SuiteClasses({ UploadVideoFileTestCases.class, UploadVoiceFileTestCases.class })
+@SuiteClasses({ BatchTagFollowersTestCases.class, BatchUntagFollowersTestCases.class })
 
-//NameRemarkTestCases.class, BatchTagFollowersTestCases.class, BatchUntagFollowersTestCases.class,
-//BlacklistFollowersTestCases.class, CreateTagTestCases.class, CustomerAudioMessageTestCases.class,
-//CustomerImageMessageTestCases.class, CustomerMusicMessageTestCases.class, 
-//CustomerRichMediaMessageTestCases.class, CustomerTextMessageTestCases.class,
-//CustomerVideoMessageTestCases.class, DeletingTagTestCases.class, EditingTagTestCases.class, 
-//GetFollowerListTestCases.class, GetUserProfileTestCases.class, MessageDecryptionTestCases.class, 
-//MessageEncrytionTestCases.class, ObtainBlacklistTestCases.class, ObtainFollowerTagsTestCases.class, 
-//ObtainFollowersWithTagTestCases.class, PreviewBroadcastArticleTestCases.class, PreviewBroadcastImageTestCases.class,
-//PreviewBroadcastTextTestCases.class, PreviewBroadcastVideoTestCases.class, PreviewBroadcastVoiceTestCases.class,
-//QueryTagsTestCases.class, UnblacklistFollowersTestCases.class, VerifyUrlTestCases.class, 
-//DeleteBroadcastMessageTestCases.class, GroupBasedBroadcastArticleTestCases.class, GroupBasedBroadcastImageTestCases.class, 
-//GroupBasedBroadcastTextTestCases.class, GroupBasedBroadcastVideoTestCases.class, GroupBasedBroadcastVoiceTestCases.class
-//OpenIdListBroadcastArticleTestCases.class, OpenIdListBroadcastImageTestCases.class, OpenIdListBroadcastTextTestCases.class,
-//OpenIdListBroadcastVideoTestCases.class, OpenIdListBroadcastVoiceTestCases.class, QueryBroadcastStatusTestCases.class, 
-//UploadImageFileTestCases.class, UploadThumbFileTestCases.class, 
+//BatchTagFollowersTestCases.class, BatchUntagFollowersTestCases.class, BlacklistFollowersTestCases.class, 
+//CreateTagTestCases.class, CustomerAudioMessageTestCases.class, CustomerImageMessageTestCases.class, 
+//CustomerMusicMessageTestCases.class, CustomerRichMediaMessageTestCases.class, CustomerTextMessageTestCases.class, 
+//CustomerVideoMessageTestCases.class, ##DeleteBroadcastMessageTestCases.class, DeletingTagTestCases.class, 
+//EditingTagTestCases.class, GetFollowerListTestCases.class, GetUserProfileTestCases.class,
+//GroupBasedBroadcastArticleTestCases.class, GroupBasedBroadcastImageTestCases.class, GroupBasedBroadcastTextTestCases.class, 
+//GroupBasedBroadcastVideoTestCases.class, GroupBasedBroadcastVoiceTestCases.class, MessageDecryptionTestCases.class, 
+//MessageEncrytionTestCases.class, NameRemarkTestCases.class, ObtainBlacklistTestCases.class, 
+//ObtainFollowersWithTagTestCases.class, ObtainFollowerTagsTestCases.class, OpenIdListBroadcastArticleTestCases.class, 
+//OpenIdListBroadcastImageTestCases.class, OpenIdListBroadcastTextTestCases.class, OpenIdListBroadcastVideoTestCases.class, 
+//OpenIdListBroadcastVoiceTestCases.class, PreviewBroadcastArticleTestCases.class, PreviewBroadcastImageTestCases.class, 
+//PreviewBroadcastTextTestCases.class, PreviewBroadcastVideoTestCases.class, PreviewBroadcastVoiceTestCases.class, 
+//QueryBroadcastStatusTestCases.class, QueryTagsTestCases.class, UnblacklistFollowersTestCases.class, 
+//UploadArticleMessageDataTestCases.class, UploadImageFileTestCases.class, UploadThumbFileTestCases.class, 
+//UploadVideoFileTestCases.class, UploadVoiceFileTestCases.class, VerifyUrlTestCases.class, 
+
 
 public class FunctionalTestSuite {
 

@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.activation.DataHandler;
@@ -94,7 +95,7 @@ public class HttpsConnection {
 		}
 		
 		URL url = new URL(httpsURL);
-	    HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
+	    HttpURLConnection con = (HttpURLConnection)url.openConnection();
 	    con.setDoInput(true);
 	    con.setDoOutput(true);
 	    con.setUseCaches(false);

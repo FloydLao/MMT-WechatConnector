@@ -29,8 +29,8 @@ public class CustomerAudioMessageTestCases extends AbstractTestCase<WechatConnec
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
-		java.lang.String mediaId = "pjvRfkQdW9p998FHu--quTRYRg91ZO9cjEoiI3Y_1BU";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
+		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXInPnDBRtWX6y_6IMXjO7DaI";
 		assertEquals(getConnector().customerAudioMessage(accessToken, openId, mediaId), expected);
 	}
 

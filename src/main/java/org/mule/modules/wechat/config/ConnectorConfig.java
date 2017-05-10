@@ -8,14 +8,7 @@ import org.mule.api.annotations.param.Default;
 @Configuration(friendlyName = "Configuration", configElementName = "config-wechat")
 public class ConnectorConfig {
 
-    /**
-     * Host of WeChat Official Account Admin System
-     */
-    @Configurable
-    @Default("https://api.weixin.qq.com")
-    private String wechatHost;
-    
-    /**
+     /**
      * Token set by the developer on the WeChat Official Account Admin Platform
      */
     @Configurable
@@ -40,22 +33,6 @@ public class ConnectorConfig {
     @Default("false")
     @Placement(tab="Advanced", group = "Advanced")
     private Boolean selfManageAccessToken;
-
-    /**
-     * Get Wechat Host name
-     */
-	public String getWechatHost() {
-		return wechatHost;
-	}
-
-    /**
-     * Set Wechat Host name
-     *
-     * @param wechatHost Wechat Host name
-     */
-	public void setWechatHost(String wechatHost) {
-		this.wechatHost = wechatHost;
-	}
 
 	/**
      * Get Verify Url token

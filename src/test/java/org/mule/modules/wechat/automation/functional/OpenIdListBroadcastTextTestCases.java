@@ -33,7 +33,7 @@ public class OpenIdListBroadcastTextTestCases extends AbstractTestCase<WechatCon
 		java.lang.String content = "OpenIdList Broadcast";
 		java.lang.String ApiName = "OpenIDListBroadcastText";
 		java.util.Map<java.lang.String, java.lang.Object> toUser = new java.util.HashMap<String, Object>();
-		toUser.put("touser", java.util.Arrays.asList("oU1fjv8UyBAxWqlGAExjW_8HHPlU","oU1fjv9f3ddlyF3V1OpYgQGcQgyI"));
+		toUser.put("touser", java.util.Arrays.asList("oRwGLwz_vjiN-rogxjjUoSzfPzWs","oRwGLwzaDc9z6IRhMyfBtjWs_mao"));
 		assertEquals(getConnector().openIdListBroadcastText(accessToken, content, ApiName, toUser).get("errcode"), expected.get("errcode"));
 	}
 

@@ -30,8 +30,8 @@ public class GroupBasedBroadcastArticleTestCases extends AbstractTestCase<Wechat
 		expected.put("errmsg", "send job submission success");
 		expected.put("msg_id", "3147483650");
 		java.lang.String accessToken = null;
-		java.lang.String groupId = "100";
-		java.lang.String mediaId = "pjvRfkQdW9p998FHu--quYBS94plUt_hcySfamHZsto";
+		java.lang.String groupId = "110";
+		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXIs9NJG_saO9m0yrn1cOc3Po";
 		assertEquals(getConnector().groupBasedBroadcastArticle(accessToken, groupId, mediaId).get("errcode"), expected.get("errcode"));
 	}
 

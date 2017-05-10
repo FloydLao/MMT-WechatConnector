@@ -27,7 +27,7 @@ public class NameRemarkTestCases extends AbstractTestCase<WechatConnector> {
 	public void verify() throws Exception {
 		java.lang.Object expected = "{errcode=0, errmsg=ok}";
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv6xniBQRFYJN-v32bXyaAoU";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
 		java.lang.String remark = "牛日asdf";
 		assertEquals(getConnector().nameRemark(accessToken, openId, remark).toString(), expected);
 	}

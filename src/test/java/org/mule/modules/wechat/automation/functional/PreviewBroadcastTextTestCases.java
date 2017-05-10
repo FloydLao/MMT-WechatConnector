@@ -29,7 +29,7 @@ public class PreviewBroadcastTextTestCases extends AbstractTestCase<WechatConnec
 		expected.put("errcode", 0);
 		expected.put("errmsg", "preview success");
 		java.lang.String accessToken = null;
-		java.lang.String toUser = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
+		java.lang.String toUser = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
 		java.lang.String content = "Preview Broadcast";
 		assertEquals(getConnector().previewBroadcastText(accessToken, toUser, content), expected);
 	}

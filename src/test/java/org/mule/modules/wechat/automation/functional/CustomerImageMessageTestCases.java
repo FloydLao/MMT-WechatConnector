@@ -29,8 +29,8 @@ public class CustomerImageMessageTestCases extends AbstractTestCase<WechatConnec
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
-		java.lang.String mediaId = "pjvRfkQdW9p998FHu--quYihqJqJ8hv9buhFh_h83O8";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
+		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXItelK7mP9sLc1XuiFWIDzEs";
 		assertEquals(getConnector().customerImageMessage(accessToken, openId, mediaId), expected);
 	}
 

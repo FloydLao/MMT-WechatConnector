@@ -30,7 +30,7 @@ public class GroupBasedBroadcastTextTestCases extends AbstractTestCase<WechatCon
 		expected.put("errmsg", "send job submission success");
 		expected.put("msg_id", "3147483650");
 		java.lang.String accessToken = null;
-		java.lang.String groupId = "100";
+		java.lang.String groupId = "110";
 		java.lang.String content = "Group Broadcast";
 		assertEquals(getConnector().groupBasedBroadcastText(accessToken, groupId, content).get("errcode"), expected.get("errcode"));
 	}

@@ -32,7 +32,7 @@ public class UploadThumbFileTestCases extends AbstractTestCase<WechatConnector> 
 		javax.activation.DataSource fds = new javax.activation.FileDataSource(".\\demo\\Thumb.jpg");
 		java.util.Map<java.lang.String, javax.activation.DataHandler> attachment = new java.util.HashMap<java.lang.String, javax.activation.DataHandler>();
 		attachment.put("file", new javax.activation.DataHandler(fds));
-		assertEquals(getConnector().uploadThumbFile(accessToken, payload, attachment).containsKey("thumb_media_id"), expected.containsKey("media_id"));
+		assertEquals(getConnector().uploadThumbFile(accessToken, payload, attachment).containsKey("thumb_media_id"), expected.containsKey("thumb_media_id"));
 	}
 
 }

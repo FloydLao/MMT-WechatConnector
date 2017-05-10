@@ -29,7 +29,7 @@ public class CustomerRichMediaMessageTestCases extends AbstractTestCase<WechatCo
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
 		java.lang.String ApiName = "CustomerRichMediaMessage";
 		java.util.List<java.util.Map<java.lang.String, java.lang.Object>> articles = null;
 		java.util.Map<java.lang.String, java.lang.Object> _articles = new java.util.HashMap<String, Object>();

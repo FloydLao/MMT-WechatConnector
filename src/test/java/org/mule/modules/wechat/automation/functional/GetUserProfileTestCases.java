@@ -27,9 +27,9 @@ public class GetUserProfileTestCases extends AbstractTestCase<WechatConnector> {
 	@Test
 	public void verify() throws Exception {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
-		expected.put("openid", "oU1fjv8UyBAxWqlGAExjW_8HHPlU");
+		expected.put("openid", "oRwGLwz_vjiN-rogxjjUoSzfPzWs");
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
 		org.mule.modules.wechat.WechatConnector.Lang lang = Lang.zh_CN;
 		assertEquals(getConnector().getUserProfile(accessToken, openId, lang).get("openid"), expected.get("openid"));
 	}

@@ -29,8 +29,8 @@ public class EditingTagTestCases extends AbstractTestCase<WechatConnector> {
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.Integer tagId = 102;
-		java.lang.String tagName = "Tag3";
+		java.lang.Integer tagId = 110;
+		java.lang.String tagName = "Test01";
 		assertEquals(getConnector().editingTag(accessToken, tagId, tagName), expected);
 	}
 

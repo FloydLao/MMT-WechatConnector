@@ -31,7 +31,7 @@ public class BlacklistFollowersTestCases extends AbstractTestCase<WechatConnecto
 		java.lang.String accessToken = null;
 		java.lang.String ApiName = "BlacklistFollowers";
 		java.util.Map<java.lang.String, java.lang.Object> openidList = new java.util.HashMap<String, Object>();
-		openidList.put("openid_list", java.util.Arrays.asList("oU1fjv6xniBQRFYJN-v32bXyaAoU"));
+		openidList.put("openid_list", java.util.Arrays.asList("oRwGLw06gGrCdz_eXqkgCTF8wNw0"));
 		assertEquals(getConnector().blacklistFollowers(accessToken, ApiName, openidList), expected);
 	}
 

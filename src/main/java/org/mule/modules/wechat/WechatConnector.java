@@ -75,7 +75,7 @@ public class WechatConnector {
     	    	}
     	    	
     	    	if (!config.getSelfManageAccessToken()){
-    	    		String httpsURL = config.getWechatHost() + "/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
+    	    		String httpsURL = "https://api.wechat.com/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
         		    System.out.println(httpsURL);
         	    	HttpsConnection con = new HttpsConnection();
         		    Map<String, Object> map = null;
@@ -217,9 +217,9 @@ public class WechatConnector {
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=image";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=image";
         	} else {
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + accessToken + "&type=image";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + accessToken + "&type=image";
         	}
     		
             // Post to Wechat
@@ -245,9 +245,9 @@ public class WechatConnector {
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=voice";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=voice";
         	} else {
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + accessToken + "&type=voice";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + accessToken + "&type=voice";
         	}
     		
             // Post to Wechat
@@ -273,9 +273,9 @@ public class WechatConnector {
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=video";
+				httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=video";
         	} else {
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + accessToken + "&type=video";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + accessToken + "&type=video";
         	}
     		
             // Post to Wechat
@@ -301,9 +301,9 @@ public class WechatConnector {
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=thumb";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=thumb";
         	} else {
-        		httpsURL = config.getWechatHost() + "/cgi-bin/media/upload?access_token=" + accessToken + "&type=thumb";
+        		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + accessToken + "&type=thumb";
         	}
     		
             // Post to Wechat
@@ -328,9 +328,9 @@ public class WechatConnector {
     public Map<String, Object> customerTextMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String content) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -362,9 +362,9 @@ public class WechatConnector {
     public Map<String, Object> customerImageMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -396,9 +396,9 @@ public class WechatConnector {
     public Map<String, Object> customerAudioMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -431,9 +431,9 @@ public class WechatConnector {
     public Map<String, Object> customerVideoMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String mediaId, String thumbMediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -470,9 +470,9 @@ public class WechatConnector {
     public Map<String, Object> customerMusicMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String title, String description, String musicUrl, String hqMusicUrl, String thumbMediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -509,9 +509,9 @@ public class WechatConnector {
     public Map<String, Object> customerRichMediaMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Placement(order = 1) String openId , @MetaDataKeyParam @Default("CustomerRichMediaMessage") String ApiName, @Default("#[payload]") List<Map<String,Object>> articles) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/custom/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -552,9 +552,9 @@ public class WechatConnector {
     public Map<String, Object> uploadArticleMessageData(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @MetaDataKeyParam @Default("UploadArticleMessageData") String ApiName, @Default("#[payload]") List<Map<String,Object>> articles) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/media/uploadnews?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/media/uploadnews?access_token=" + accessToken;
+    		httpsURL = "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -594,9 +594,9 @@ public class WechatConnector {
     public Map<String, Object> groupBasedBroadcastArticle(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -630,9 +630,9 @@ public class WechatConnector {
     public Map<String, Object> groupBasedBroadcastText(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String content) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -666,9 +666,9 @@ public class WechatConnector {
     public Map<String, Object> groupBasedBroadcastVoice(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -702,9 +702,9 @@ public class WechatConnector {
     public Map<String, Object> groupBasedBroadcastImage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -738,9 +738,9 @@ public class WechatConnector {
     public Map<String, Object> groupBasedBroadcastVideo(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/sendall?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/sendall?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -775,9 +775,9 @@ public class WechatConnector {
     public Map<String, Object> openIdListBroadcastArticle(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, @MetaDataKeyParam @Default("OpenIDListBroadcastArticle") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -812,9 +812,9 @@ public class WechatConnector {
     public Map<String, Object> openIdListBroadcastText(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String content, @MetaDataKeyParam @Default("OpenIDListBroadcastText") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -849,9 +849,9 @@ public class WechatConnector {
     public Map<String, Object> openIdListBroadcastVoice(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, @MetaDataKeyParam @Default("OpenIDListBroadcastVoice") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -886,9 +886,9 @@ public class WechatConnector {
     public Map<String, Object> openIdListBroadcastImage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, @MetaDataKeyParam @Default("OpenIDListBroadcastImage") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -925,9 +925,9 @@ public class WechatConnector {
     public Map<String, Object> openIdListBroadcastVideo(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, String title, String description, @MetaDataKeyParam @Default("OpenIDListBroadcastVideo") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/send?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/send?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -962,14 +962,14 @@ public class WechatConnector {
     public Map<String, Object> deleteBroadcastMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String msgId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/delete?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/delete?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/delete?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/delete?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
     	JSONObject obj = new JSONObject();
-        obj.put("msg_id", msgId);
+        obj.put("msgid", msgId);
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
@@ -992,9 +992,9 @@ public class WechatConnector {
     public Map<String, Object> previewBroadcastArticle(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1026,9 +1026,9 @@ public class WechatConnector {
     public Map<String, Object> previewBroadcastText(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String content) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1060,9 +1060,9 @@ public class WechatConnector {
     public Map<String, Object> previewBroadcastVoice(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1094,9 +1094,9 @@ public class WechatConnector {
     public Map<String, Object> previewBroadcastImage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1128,9 +1128,9 @@ public class WechatConnector {
     public Map<String, Object> previewBroadcastVideo(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/preview?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/preview?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1161,9 +1161,9 @@ public class WechatConnector {
     public Map<String, Object> queryBroadcastStatus(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String msgId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/get?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/get?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/message/mass/get?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/get?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1190,9 +1190,9 @@ public class WechatConnector {
     public Map<String, Object> getFollowerList(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Optional String nextOpenId) throws Exception {
     	String httpsURL = java.util.Optional.ofNullable(nextOpenId).orElse("");
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/get?access_token=" + WechatConnector.accessToken + "&next_openid=" + httpsURL;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/get?access_token=" + WechatConnector.accessToken + "&next_openid=" + httpsURL;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/get?access_token=" + accessToken + "&next_openid=" + httpsURL;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/get?access_token=" + accessToken + "&next_openid=" + httpsURL;
     	}
     	
     	HttpsConnection con = new HttpsConnection();
@@ -1215,9 +1215,9 @@ public class WechatConnector {
     public Map<String, Object> getUserProfile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, @Default("en") Lang lang) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/info?access_token=" + WechatConnector.accessToken + "&openid=" + openId + "&lang=" + lang;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/info?access_token=" + WechatConnector.accessToken + "&openid=" + openId + "&lang=" + lang;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/info?access_token=" + accessToken + "&openid=" + openId + "&lang=" + lang;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/info?access_token=" + accessToken + "&openid=" + openId + "&lang=" + lang;
     	}
     	
     	HttpsConnection con = new HttpsConnection();
@@ -1239,9 +1239,9 @@ public class WechatConnector {
     public Map<String, Object> createTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String tagName) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/create?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/create?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/create?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/create?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1269,9 +1269,9 @@ public class WechatConnector {
     public Map<String, Object> queryTags(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/get?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/get?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/get?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/get?access_token=" + accessToken;
     	}
     	
     	HttpsConnection con = new HttpsConnection();
@@ -1294,9 +1294,9 @@ public class WechatConnector {
     public Map<String, Object> editingTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, Integer tagId, String tagName) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/update?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/update?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/update?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/update?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1326,9 +1326,9 @@ public class WechatConnector {
     public Map<String, Object> deletingTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, Integer tagId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/delete?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/delete?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/delete?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/delete?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1358,15 +1358,17 @@ public class WechatConnector {
     public Map<String, Object> obtainFollowersWithTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, Integer tagId, @Optional String nextOpenId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/tag/get?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/tag/get?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/tag/get?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/tag/get?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
     	JSONObject obj = new JSONObject();
-        obj.put("tagid", tagId);
-        obj.put("next_openid", java.util.Optional.ofNullable(nextOpenId).orElse(""));
+        JSONObject subObj = new JSONObject();
+        subObj.put("id", tagId);
+        subObj.put("next_openid", java.util.Optional.ofNullable(nextOpenId).orElse(""));
+        obj.put("tag", subObj);
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
@@ -1390,9 +1392,9 @@ public class WechatConnector {
     public Map<String, Object> batchTagFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Placement(order = 1) Integer tagId, @MetaDataKeyParam @Default("BatchTagFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchtagging?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchtagging?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchtagging?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchtagging?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1424,9 +1426,9 @@ public class WechatConnector {
     public Map<String, Object> batchUntagFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Placement(order = 1) Integer tagId, @MetaDataKeyParam @Default("BatchUntagFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchuntagging?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchuntagging?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchuntagging?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchuntagging?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1456,9 +1458,9 @@ public class WechatConnector {
     public Map<String, Object> obtainFollowerTags(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/getidlist?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/getidlist?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/getidlist?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/getidlist?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1486,9 +1488,9 @@ public class WechatConnector {
     public Map<String, Object> nameRemark(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String remark) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/info/updateremark?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/info/updateremark?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/user/info/updateremark?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/user/info/updateremark?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1516,9 +1518,9 @@ public class WechatConnector {
     public Map<String, Object> obtainBlacklist(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Optional String beginOpenId) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/getblacklist?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/getblacklist?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/getblacklist?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/getblacklist?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1546,9 +1548,9 @@ public class WechatConnector {
     public Map<String, Object> blacklistFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @MetaDataKeyParam @Default("BlacklistFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchblacklist?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchblacklist?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchblacklist?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchblacklist?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1578,9 +1580,9 @@ public class WechatConnector {
     public Map<String, Object> unblacklistFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @MetaDataKeyParam @Default("UnblacklistFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
     	String httpsURL = "";
     	if (!config.getSelfManageAccessToken()){
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchunblacklist?access_token=" + WechatConnector.accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchunblacklist?access_token=" + WechatConnector.accessToken;
     	} else {
-    		httpsURL = config.getWechatHost() + "/cgi-bin/tags/members/batchunblacklist?access_token=" + accessToken;
+    		httpsURL = "https://api.wechat.com/cgi-bin/tags/members/batchunblacklist?access_token=" + accessToken;
     	}
     	
     	// Create Text Message JSON
@@ -1605,7 +1607,7 @@ public class WechatConnector {
      */
     @Source(sourceStrategy = SourceStrategy.POLLING,pollingPeriod=6600000)
     public void getAccessToken(SourceCallback callback) throws Exception {
-    	String httpsURL = config.getWechatHost() + "/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
+    	String httpsURL = "https://api.wechat.com/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
 	    
     	HttpsConnection con = new HttpsConnection();
 	    Map<String, Object> map = con.Get(httpsURL);

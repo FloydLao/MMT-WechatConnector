@@ -28,7 +28,7 @@ public class ObtainFollowerTagsTestCases extends AbstractTestCase<WechatConnecto
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
 		expected.put("tagid_list", 101);
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
+		java.lang.String openId = "oRwGLw7-FmWPRt7DKYqU7rIGWKvE";
 		assertEquals(getConnector().obtainFollowerTags(accessToken, openId).containsKey("tagid_list"), expected.containsKey("tagid_list"));
 	}
 

@@ -29,7 +29,7 @@ public class DeletingTagTestCases extends AbstractTestCase<WechatConnector> {
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.Integer tagId = 104;
+		java.lang.Integer tagId = 109;
 		assertEquals(getConnector().deletingTag(accessToken, tagId), expected);
 	}
 

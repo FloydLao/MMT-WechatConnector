@@ -29,12 +29,12 @@ public class CustomerMusicMessageTestCases extends AbstractTestCase<WechatConnec
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.String openId = "oU1fjv8UyBAxWqlGAExjW_8HHPlU";
+		java.lang.String openId = "oRwGLwz_vjiN-rogxjjUoSzfPzWs";
 		java.lang.String title = "Music Title";
 		java.lang.String description = "Music Description";
 		java.lang.String musicUrl = "https://www.youtube.com/watch?v=PT2_F-1esPk";
 		java.lang.String hqMusicUrl = "https://www.youtube.com/watch?v=PT2_F-1esPk";
-		java.lang.String thumbMediaId = "1A4fOnYgIEnu2sXaRo6m635cbmhbXQBz6r-dwNm2SBMiAAUXAWHoJdbSJ3Rz0y2G";
+		java.lang.String thumbMediaId = "t6Spy95et4P_TBbsrjDXItelK7mP9sLc1XuiFWIDzEs";
 		assertEquals(getConnector().customerMusicMessage(accessToken, openId, title, description, musicUrl, hqMusicUrl,
 				thumbMediaId), expected);
 	}

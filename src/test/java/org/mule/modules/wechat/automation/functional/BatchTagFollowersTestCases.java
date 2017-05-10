@@ -30,10 +30,10 @@ public class BatchTagFollowersTestCases extends AbstractTestCase<WechatConnector
 		expected.put("errcode", 0);
 		expected.put("errmsg", "ok");
 		java.lang.String accessToken = null;
-		java.lang.Integer tagId = 100;
+		java.lang.Integer tagId = 105;
 		java.lang.String ApiName = "BatchTagFollowers";
 		java.util.Map<java.lang.String, java.lang.Object> openidList = new java.util.HashMap<String, Object>();
-		openidList.put("openid_list", java.util.Arrays.asList("oU1fjv8UyBAxWqlGAExjW_8HHPlU", "oU1fjv6xniBQRFYJN-v32bXyaAoU", "oU1fjv9f3ddlyF3V1OpYgQGcQgyI"));
+		openidList.put("openid_list", java.util.Arrays.asList("oRwGLwz_vjiN-rogxjjUoSzfPzWs", "oRwGLw2OnKPY731KwiEqkEYv-l9o", "oRwGLw06gGrCdz_eXqkgCTF8wNw0"));
 		assertEquals(getConnector().batchTagFollowers(accessToken, tagId, ApiName, openidList), expected);
 	}
 
