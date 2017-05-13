@@ -48,7 +48,7 @@ class SHA1 {
 			String str = sb.toString();
 			// SHA1签名生成
 			MessageDigest md = MessageDigest.getInstance("SHA-1");
-			md.update(str.getBytes(Charset.forName("UFT-8")));
+			md.update(str.getBytes(Charset.forName("UTF-8")));
 			byte[] digest = md.digest();
 
 			StringBuffer hexstr = new StringBuffer();
