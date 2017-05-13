@@ -40,7 +40,7 @@ import org.apache.log4j.Logger;
  * </ol>
  */
 public class WXBizMsgCrypt {
-	final static Logger logger = Logger.getLogger(WXBizMsgCrypt.class);
+	private static final Logger logger = Logger.getLogger(WXBizMsgCrypt.class);
 	static Charset CHARSET = Charset.forName("utf-8");
 	Base64 base64 = new Base64();
 	byte[] aesKey;

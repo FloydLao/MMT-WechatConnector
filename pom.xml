@@ -31,10 +31,16 @@
     <distributionManagement>
         <repository>
             <id>mmt-releases</id>
-            <name>MMT Repository</name>
-            <url>https://github.com/FloydLao/MMT-WechatConnector</url>
+            <name>MMT Repository</name>					
+            <url>https://github.com/FloydLao/MMT-WechatConnector/tree/release/v1.0.0</url>
             <layout>default</layout>
         </repository>
+        <snapshotRepository>
+            <id>mmt-snapshots</id>
+            <name>MMT Snapshot Repository</name>
+            <url>https://github.com/FloydLao/MMT-WechatConnector/tree/master</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
     </distributionManagement>
     
     <dependencies>

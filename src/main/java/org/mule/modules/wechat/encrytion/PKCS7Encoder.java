@@ -11,6 +11,8 @@ package org.mule.modules.wechat.encrytion;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
+import org.json.JSONObject;
+
 /**
  * 提供基于PKCS7算法的加解密接口.
  */
@@ -36,10 +38,11 @@ class PKCS7Encoder {
 		}
 		// 获得补位所用的字符
 		char padChr = chr(amountToPad);
-		String tmp = new String();
+	    StringBuilder sb = new StringBuilder();
 		for (int index = 0; index < amountToPad; index++) {
-			tmp += padChr;
+			sb.append(padChr);
 		}
+		String tmp = sb.toString();
 		return tmp.getBytes(CHARSET);
 	}
 

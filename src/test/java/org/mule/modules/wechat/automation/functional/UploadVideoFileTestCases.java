@@ -34,7 +34,7 @@ public class UploadVideoFileTestCases extends AbstractTestCase<WechatConnector> 
 		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 		MimetypesFileTypeMap mfm = new MimetypesFileTypeMap();
 		mfm.addMimeTypes("video/mp4 mp4");
-		FileDataSource fds = new FileDataSource(".\\demo\\Video.mp4");
+		FileDataSource fds = new FileDataSource(".\\src\\test\\java\\file\\Video.mp4");
 		fds.setFileTypeMap(mfm);
 		java.util.Map<java.lang.String, DataHandler> attachment = new java.util.HashMap<java.lang.String, DataHandler>();
 		attachment.put("file", new DataHandler(fds));

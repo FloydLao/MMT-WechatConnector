@@ -34,7 +34,7 @@ public class UploadVoiceFileTestCases extends AbstractTestCase<WechatConnector> 
 		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 		MimetypesFileTypeMap mfm = new MimetypesFileTypeMap();
 		mfm.addMimeTypes("audio/mp3 mp3");
-		FileDataSource fds = new FileDataSource(new java.io.File(".\\demo\\Voice.mp3"));
+		FileDataSource fds = new FileDataSource(new java.io.File(".\\src\\test\\java\\file\\Voice.mp3"));
 		fds.setFileTypeMap(mfm);
 		java.util.Map<java.lang.String, DataHandler> attachment = new java.util.HashMap<java.lang.String, DataHandler>();
 		attachment.put("file", new DataHandler(fds));

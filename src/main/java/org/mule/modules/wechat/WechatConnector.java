@@ -52,7 +52,7 @@ public class WechatConnector {
     @Config
     ConnectorConfig config = null;
     private static String accessToken = "";
-    final static Logger logger = Logger.getLogger(WechatConnector.class);
+    private static final Logger logger = Logger.getLogger(WechatConnector.class);
     public enum Lang
     {
     	zh_CN, zh_TW, en

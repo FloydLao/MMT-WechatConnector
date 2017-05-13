@@ -35,16 +35,17 @@ public class HttpsConnection {
 	    BufferedReader in = new BufferedReader(isr);
 	    
 	    String inputLine;
+	    StringBuilder sb = new StringBuilder();
 	    while ((inputLine = in.readLine()) != null)
 	    {
-	    	result += (new JSONObject(inputLine)).toString();
+	    	sb.append((new JSONObject(inputLine)).toString());
 	    }
+	    result = sb.toString();
 	    in.close();
 	    
 	    ObjectMapper mapper = new ObjectMapper();
-	    Map<String, Object> map = new HashMap<String, Object>();
 	    // convert JSON string to Map
-	    map = mapper.readValue(result, new TypeReference<Map<String, Object>>() {});
+	    Map<String, Object> map = mapper.readValue(result, new TypeReference<Map<String, Object>>() {});
 	    
 	    return map;
 	}
@@ -67,16 +68,17 @@ public class HttpsConnection {
 	    BufferedReader in = new BufferedReader(isr);
 	    
 	    String inputLine;
+	    StringBuilder sb = new StringBuilder();
 	    while ((inputLine = in.readLine()) != null)
 	    {
-	    	result += (new JSONObject(inputLine)).toString();
+	    	sb.append((new JSONObject(inputLine)).toString());
 	    }
+	    result = sb.toString();
 	    in.close();
 	    
 	    ObjectMapper mapper = new ObjectMapper();
-	    Map<String, Object> map = new HashMap<String, Object>();
 	    // convert JSON string to Map
-	    map = mapper.readValue(result, new TypeReference<Map<String, Object>>() {});
+	    Map<String, Object> map = mapper.readValue(result, new TypeReference<Map<String, Object>>() {});
 	    
 	    return map;
 	}
@@ -129,16 +131,17 @@ public class HttpsConnection {
 	    BufferedReader in = new BufferedReader(isr);
 	    
 	    String inputLine;
+	    StringBuilder sb = new StringBuilder();
 	    while ((inputLine = in.readLine()) != null)
 	    {
-	    	result += (new JSONObject(inputLine)).toString();
+	    	sb.append((new JSONObject(inputLine)).toString());
 	    }
+	    result = sb.toString();
 	    in.close();
 	    
 	    ObjectMapper mapper = new ObjectMapper();
-	    Map<String, Object> map = new HashMap<String, Object>();
 	    // convert JSON string to Map
-	    map = mapper.readValue(result, new TypeReference<Map<String, Object>>() {});
+	    Map<String, Object> map = mapper.readValue(result, new TypeReference<Map<String, Object>>() {});
 	    
 	    return map;
 	}

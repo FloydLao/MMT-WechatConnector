@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
  * 计算公众平台的消息签名接口.
  */
 class SHA1 {
-	final static Logger logger = Logger.getLogger(SHA1.class);
+	private static final Logger logger = Logger.getLogger(SHA1.class);
 	
 	//Add a private constructor to hide the implicit public one
 	private SHA1(){

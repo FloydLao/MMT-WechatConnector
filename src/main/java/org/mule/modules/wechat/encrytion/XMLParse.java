@@ -25,7 +25,7 @@ import org.xml.sax.InputSource;
  * 提供提取消息格式中的密文及生成回复消息格式的接口.
  */
 class XMLParse {
-	final static Logger logger = Logger.getLogger(XMLParse.class);
+	private static final Logger logger = Logger.getLogger(XMLParse.class);
 
 	//Add a private constructor to hide the implicit public one
 	private XMLParse(){
