@@ -17,6 +17,10 @@ import java.util.Arrays;
 class PKCS7Encoder {
 	static Charset CHARSET = Charset.forName("utf-8");
 	static int BLOCK_SIZE = 32;
+	
+	//Add a private constructor to hide the implicit public one
+	private PKCS7Encoder(){
+    }
 
 	/**
 	 * 获得对明文进行补位填充的字节.

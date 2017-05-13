@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class HttpsConnection {
-	public Map<String, Object> Get(String httpsURL) throws Exception {
+	public Map<String, Object> get(String httpsURL) throws Exception {
 		
 		String result = "";
 		URL url = new URL(httpsURL);
@@ -49,7 +49,7 @@ public class HttpsConnection {
 	    return map;
 	}
 	
-	public Map<String, Object> Post(String httpsURL, String json) throws Exception {
+	public Map<String, Object> post(String httpsURL, String json) throws Exception {
 		
 		String result = "";
 		URL url = new URL(httpsURL);
@@ -81,7 +81,7 @@ public class HttpsConnection {
 	    return map;
 	}
 	
-	public Map<String, Object> PostFile(String httpsURL, DataHandler attachment) throws Exception {
+	public Map<String, Object> postFile(String httpsURL, DataHandler attachment) throws Exception {
 		String result = "";
 		String lineEnd = "\r\n";
 		String twoHyphens = "--";
@@ -89,7 +89,7 @@ public class HttpsConnection {
 		TikaConfig config = TikaConfig.getDefaultConfig();
 		MimeTypes allTypes = config.getMimeRepository();
 		String ext = allTypes.forName(attachment.getContentType()).getExtension();
-		if (ext == "") {
+		if (ext.equals("")) {
 			ContentTypeEnum contentTypeEnum = ContentTypeEnum.getContentTypeEnumByContentType(attachment.getContentType().toLowerCase());
 			ext = java.util.Optional.ofNullable(contentTypeEnum.getExtension()).orElse("");
 		}

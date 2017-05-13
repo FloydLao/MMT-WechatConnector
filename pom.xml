@@ -28,6 +28,15 @@
         </repository>
     </repositories>
     
+    <distributionManagement>
+        <repository>
+            <id>mmt-releases</id>
+            <name>MMT Repository</name>
+            <url>https://github.com/FloydLao/MMT-WechatConnector</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+    
     <dependencies>
     	<dependency>
     		<groupId>commons-codec</groupId>

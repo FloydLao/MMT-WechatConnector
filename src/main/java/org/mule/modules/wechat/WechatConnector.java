@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.mule.api.annotations.Config;
@@ -51,6 +52,7 @@ public class WechatConnector {
     @Config
     ConnectorConfig config = null;
     private static String accessToken = "";
+    final static Logger logger = Logger.getLogger(WechatConnector.class);
     public enum Lang
     {
     	zh_CN, zh_TW, en
@@ -69,8 +71,7 @@ public class WechatConnector {
     	    		try {
 						Thread.sleep(500);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						logger.error(e);
 					}
     	    	}
     	    	
@@ -80,10 +81,9 @@ public class WechatConnector {
         	    	HttpsConnection con = new HttpsConnection();
         		    Map<String, Object> map = null;
 					try {
-						map = con.Get(httpsURL);
+						map = con.get(httpsURL);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						logger.error(e);
 					}
         		    
         		    if (map.containsKey("access_token")) {
@@ -158,8 +158,7 @@ public class WechatConnector {
 				try {
 					result = pc.decryptMsg(parameters.get("msg_signature").get(0), parameters.get("timestamp").get(0), parameters.get("nonce").get(0), fromXML);
 				} catch (AesException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error(e);
 				}
 			}
 		}
@@ -194,8 +193,7 @@ public class WechatConnector {
 			try {
 				result = pc.encryptMsg(result, parameters.get("timestamp").get(0), parameters.get("nonce").get(0));
 			} catch (AesException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error(e);
 			}
 		}
     	
@@ -224,7 +222,7 @@ public class WechatConnector {
     		
             // Post to Wechat
     		HttpsConnection con = new HttpsConnection();
-    	    map = con.PostFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	    map = con.postFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
     	}
 	    
         return map;
@@ -252,7 +250,7 @@ public class WechatConnector {
     		
             // Post to Wechat
     		HttpsConnection con = new HttpsConnection();
-    	    map = con.PostFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	    map = con.postFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
     	}
 	    
         return map;
@@ -280,7 +278,7 @@ public class WechatConnector {
     		
             // Post to Wechat
     		HttpsConnection con = new HttpsConnection();
-    	    map = con.PostFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	    map = con.postFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
     	}
 	    
         return map;
@@ -308,7 +306,7 @@ public class WechatConnector {
     		
             // Post to Wechat
     		HttpsConnection con = new HttpsConnection();
-    	    map = con.PostFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	    map = con.postFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
     	}
 	    
         return map;
@@ -343,7 +341,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-    	Map<String, Object> map = con.Post(httpsURL, obj.toString());
+    	Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -377,7 +375,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -411,7 +409,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -447,7 +445,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -489,7 +487,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -533,7 +531,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -575,7 +573,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -611,7 +609,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -647,7 +645,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -683,7 +681,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -719,7 +717,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -755,7 +753,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -792,7 +790,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -829,7 +827,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -866,7 +864,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -903,7 +901,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -944,7 +942,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -973,7 +971,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1007,7 +1005,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1041,7 +1039,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1075,7 +1073,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1109,7 +1107,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1143,7 +1141,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1172,7 +1170,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1196,7 +1194,7 @@ public class WechatConnector {
     	}
     	
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Get(httpsURL);
+	    Map<String, Object> map = con.get(httpsURL);
 	    
         return map;
     }
@@ -1221,7 +1219,7 @@ public class WechatConnector {
     	}
     	
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Get(httpsURL);
+	    Map<String, Object> map = con.get(httpsURL);
 	    
         return map;
     }
@@ -1252,7 +1250,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1275,7 +1273,7 @@ public class WechatConnector {
     	}
     	
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Get(httpsURL);
+	    Map<String, Object> map = con.get(httpsURL);
 	    
         return map;
     }
@@ -1308,7 +1306,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1339,7 +1337,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1372,7 +1370,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1406,7 +1404,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1440,7 +1438,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1469,7 +1467,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1500,7 +1498,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1529,7 +1527,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1561,7 +1559,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1593,7 +1591,7 @@ public class WechatConnector {
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Post(httpsURL, obj.toString());
+	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;
     }
@@ -1610,7 +1608,7 @@ public class WechatConnector {
     	String httpsURL = "https://api.wechat.com/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
 	    
     	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.Get(httpsURL);
+	    Map<String, Object> map = con.get(httpsURL);
 	    
         callback.process(map);
     }

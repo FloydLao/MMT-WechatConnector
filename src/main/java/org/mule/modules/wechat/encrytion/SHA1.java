@@ -8,8 +8,11 @@
 
 package org.mule.modules.wechat.encrytion;
 
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.util.Arrays;
+
+import org.apache.log4j.Logger;
 
 /**
  * SHA1 class
@@ -17,6 +20,11 @@ import java.util.Arrays;
  * 计算公众平台的消息签名接口.
  */
 class SHA1 {
+	final static Logger logger = Logger.getLogger(SHA1.class);
+	
+	//Add a private constructor to hide the implicit public one
+	private SHA1(){
+	}
 
 	/**
 	 * 用SHA1算法生成安全签名
@@ -40,7 +48,7 @@ class SHA1 {
 			String str = sb.toString();
 			// SHA1签名生成
 			MessageDigest md = MessageDigest.getInstance("SHA-1");
-			md.update(str.getBytes());
+			md.update(str.getBytes(Charset.forName("UFT-8")));
 			byte[] digest = md.digest();
 
 			StringBuffer hexstr = new StringBuffer();
@@ -54,7 +62,7 @@ class SHA1 {
 			}
 			return hexstr.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 			throw new AesException(AesException.ComputeSignatureError);
 		}
 	}

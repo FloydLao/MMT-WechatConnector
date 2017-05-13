@@ -13,6 +13,7 @@ import java.io.StringReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -24,7 +25,12 @@ import org.xml.sax.InputSource;
  * 提供提取消息格式中的密文及生成回复消息格式的接口.
  */
 class XMLParse {
+	final static Logger logger = Logger.getLogger(XMLParse.class);
 
+	//Add a private constructor to hide the implicit public one
+	private XMLParse(){
+	}
+	
 	/**
 	 * 提取出xml数据包中的加密消息
 	 * @param xmltext 待提取的xml字符串
@@ -48,7 +54,7 @@ class XMLParse {
 			result[2] = nodelist2.item(0).getTextContent();
 			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 			throw new AesException(AesException.ParseXmlError);
 		}
 	}
