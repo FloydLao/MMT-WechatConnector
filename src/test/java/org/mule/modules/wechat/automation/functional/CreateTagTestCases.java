@@ -28,7 +28,7 @@ public class CreateTagTestCases extends AbstractTestCase<WechatConnector> {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
 		expected.put("tag", "");
 		java.lang.String accessToken = null;
-		java.lang.String tagName = "Test00";
+		java.lang.String tagName = "Test" + System.currentTimeMillis();
 		assertEquals(getConnector().createTag(accessToken, tagName).containsKey("tag"), expected.containsKey("tag"));
 	}
 

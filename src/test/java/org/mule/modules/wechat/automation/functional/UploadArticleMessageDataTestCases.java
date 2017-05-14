@@ -31,7 +31,7 @@ public class UploadArticleMessageDataTestCases extends AbstractTestCase<WechatCo
 		java.lang.String ApiName = "UploadArticleMessageData";
 		java.util.List<java.util.Map<java.lang.String, java.lang.Object>> articles =  null;
 		java.util.Map<java.lang.String, java.lang.Object> _articles = new java.util.HashMap<String, Object>();
-		_articles.put("thumb_media_id", "WAFo3eJDwh3In1rZPj_Pg4njEHESwn--l6SDqUxiCxbqLBCeKOQDe9GI9SMJrxqN");
+		_articles.put("thumb_media_id", "vvh5tN0KLJ9kgQPuv5Ll_Bxtx3vN_KXykk6C4AW8Y8emlgNlyuQfFKdn05zqlla2");
 		_articles.put("author", "Test Person");
 		_articles.put("title", "Article Message Title");
 		_articles.put("content_source_url", "www.qq.com");

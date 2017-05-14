@@ -930,12 +930,12 @@ public class WechatConnector {
     	
     	// Create Text Message JSON
     	JSONObject obj = new JSONObject();
-    	obj.put("msgtype", "video");
+    	obj.put("msgtype", "mpvideo");
     	JSONObject subObj = new JSONObject();
         subObj.put("media_id", mediaId);
         subObj.put("title", title);
         subObj.put("description", description);
-        obj.put("video", subObj);
+        obj.put("mpvideo", subObj);
         if (toUser.containsKey("touser")) {
         	obj.put("touser", toUser.get("touser"));
         }

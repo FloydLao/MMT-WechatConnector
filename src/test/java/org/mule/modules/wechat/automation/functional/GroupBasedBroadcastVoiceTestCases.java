@@ -27,11 +27,11 @@ public class GroupBasedBroadcastVoiceTestCases extends AbstractTestCase<WechatCo
 	public void verify() throws Exception {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
 		expected.put("errcode", 0);
-		expected.put("errmsg", "send job submission success");
+		expected.put("errmsg", "clientmsgid exist");
 		expected.put("msg_id", "3147483650");
 		java.lang.String accessToken = null;
-		java.lang.String groupId = "100";
-		java.lang.String mediaId = "pjvRfkQdW9p998FHu--quTRYRg91ZO9cjEoiI3Y_1BU";
+		java.lang.String groupId = "110";
+		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXInPnDBRtWX6y_6IMXjO7DaI";
 		assertEquals(getConnector().groupBasedBroadcastVoice(accessToken, groupId, mediaId).get("errcode"), expected.get("errcode"));
 	}
 

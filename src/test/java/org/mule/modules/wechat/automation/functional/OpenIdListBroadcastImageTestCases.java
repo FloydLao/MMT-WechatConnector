@@ -26,8 +26,8 @@ public class OpenIdListBroadcastImageTestCases extends AbstractTestCase<WechatCo
 	@Test
 	public void verify() throws Exception {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
-		expected.put("errcode", 0);
-		expected.put("errmsg", "send job submission success");
+		expected.put("errcode", 45065);
+		expected.put("errmsg", "clientmsgid exist");
 		expected.put("msg_id", "3147483650");
 		java.lang.String accessToken = null;
 		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXItelK7mP9sLc1XuiFWIDzEs";
