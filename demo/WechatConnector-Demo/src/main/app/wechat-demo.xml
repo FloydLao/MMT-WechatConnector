@@ -42,9 +42,9 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
             </otherwise>
         </choice>
     </flow>
-    <flow name="wechat-previewBroadcastText">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/preview" doc:name="HTTP"/>
-        <wechat:preview-broadcast-text config-ref="Wechat__Configuration" content="Preview Content" toUser="oRwGLwz_vjiN-rogxjjUoSzfPzWs" doc:name="Wechat previewBroadcastText"/>
+    <flow name="wechat-getFollowerList">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/followerList" doc:name="HTTP"/>
+        <wechat:get-follower-list config-ref="Wechat__Configuration"   doc:name="Wechat getFollowerList"/>
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="wechat-openIdListBroadcastText">
@@ -60,7 +60,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	]
 }]]></dw:set-payload>
         </dw:transform-message>
-        <wechat:open-id-list-broadcast-text config-ref="Wechat__Configuration" ApiName="OpenIDListBroadcastText" content="TestContent" doc:name="Wechat openIdListBroadcastText"/>
+        <wechat:open-id-list-broadcast-text config-ref="Wechat__Configuration" ApiName="OpenIDListBroadcastText" content="TestContentssssssssss" doc:name="Wechat openIdListBroadcastText"/>
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="wechat-uploadImageFile">
@@ -75,7 +75,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="wechat-getUserProfile">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/profile" doc:name="HTTP"/>
-        <wechat:get-user-profile config-ref="Wechat__Configuration" openId="oRwGLwz_vjiN-rogxjjUoSzfPzWs" lang="zh_CN" doc:name="Wechat getUserProfile"/>
+        <wechat:get-user-profile config-ref="Wechat__Configuration" openId="oRwGLwz_vjiN-rogxjjUoSzfPzWs" lang="zh_CN" doc:name="Wechat getUserProfile" />
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="wechat-nameRemark">
