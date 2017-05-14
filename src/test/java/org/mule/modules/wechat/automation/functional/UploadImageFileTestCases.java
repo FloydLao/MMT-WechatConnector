@@ -29,7 +29,7 @@ public class UploadImageFileTestCases extends AbstractTestCase<WechatConnector> 
 		expected.put("media_id", "");
 		java.lang.String accessToken = null;
 		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-		javax.activation.DataSource fds = new javax.activation.FileDataSource(System.getProperty("user.dir") + "\\src\\test\\java\\file\\Image.jpg");
+		javax.activation.DataSource fds = new javax.activation.FileDataSource(System.getProperty("user.dir") + "/src/test/java/file/Image.jpg");
 		java.util.Map<java.lang.String, javax.activation.DataHandler> attachment = new java.util.HashMap<java.lang.String, javax.activation.DataHandler>();
 		attachment.put("file", new javax.activation.DataHandler(fds));
 		assertEquals(getConnector().uploadImageFile(accessToken, payload, attachment).containsKey("media_id"), expected.containsKey("media_id"));
