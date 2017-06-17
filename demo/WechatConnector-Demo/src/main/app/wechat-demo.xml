@@ -65,7 +65,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     <flow name="wechat-uploadImageFile">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/file" doc:name="HTTP"/>
-        <wechat:upload-image-file config-ref="Wechat__Configuration" doc:name="Wechat uploadImageFile" accessToken="#[common.CustomClass.getToken()]"/>
+        <wechat:upload-permanent-image-file config-ref="Wechat__Configuration" doc:name="Wechat uploadImageFile" accessToken="#[common.CustomClass.getToken()]" title="UploadImage"/>
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </flow>
     <flow name="wechat-getAccessToken">

@@ -191,8 +191,8 @@ uri  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.htm
 
 ---
 
-=== Upload image file
-`<wechat:upload-image-file>`
+=== Upload temporary image file
+`<wechat:upload-temporary-image-file>`
 
 
 
@@ -242,8 +242,8 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 ---
 
-=== Upload voice file
-`<wechat:upload-voice-file>`
+=== Upload temporary voice file
+`<wechat:upload-temporary-voice-file>`
 
 
 
@@ -293,8 +293,8 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 ---
 
-=== Upload video file
-`<wechat:upload-video-file>`
+=== Upload temporary video file
+`<wechat:upload-temporary-video-file>`
 
 
 
@@ -344,8 +344,8 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 ---
 
-=== Upload thumb file
-`<wechat:upload-thumb-file>`
+=== Upload temporary thumb file
+`<wechat:upload-temporary-thumb-file>`
 
 
 
@@ -368,6 +368,240 @@ Upload Temporary Thumb Material
 
 | 
 accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
+
+
+
+
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+
+
+
+
+| 
+attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler>+++ | +++Attached file+++ | #[message.inboundAttachments] | {nbsp}
+
+
+|======================
+
+==== Returns
+[cols=".^40%,.^60%", options="header"]
+|======================
+|Return Java Type | Description
+|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++HashMap+++
+|======================
+
+
+
+
+---
+
+=== Upload permanent image file
+`<wechat:upload-permanent-image-file>`
+
+
+
+
++++
+Upload Permanent Image Material
+</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
++++
+
+
+    
+                
+==== Attributes
+[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
+|======================
+|Name |Java Type | Description | Default Value | Required
+| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
+
+
+
+| 
+accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
+
+
+
+
+| 
+title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The title of this image.+++ |  | *x*{nbsp}
+
+
+
+
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+
+
+
+
+| 
+attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler>+++ | +++Attached file+++ | #[message.inboundAttachments] | {nbsp}
+
+
+|======================
+
+==== Returns
+[cols=".^40%,.^60%", options="header"]
+|======================
+|Return Java Type | Description
+|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++HashMap+++
+|======================
+
+
+
+
+---
+
+=== Upload permanent voice file
+`<wechat:upload-permanent-voice-file>`
+
+
+
+
++++
+Upload Permanent Voice Material
+</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
++++
+
+
+    
+                
+==== Attributes
+[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
+|======================
+|Name |Java Type | Description | Default Value | Required
+| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
+
+
+
+| 
+accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
+
+
+
+
+| 
+title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The title of this voice.+++ |  | *x*{nbsp}
+
+
+
+
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+
+
+
+
+| 
+attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler>+++ | +++Attached file+++ | #[message.inboundAttachments] | {nbsp}
+
+
+|======================
+
+==== Returns
+[cols=".^40%,.^60%", options="header"]
+|======================
+|Return Java Type | Description
+|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++HashMap+++
+|======================
+
+
+
+
+---
+
+=== Upload permanent video file
+`<wechat:upload-permanent-video-file>`
+
+
+
+
++++
+Upload Permanent Video Material
+</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
++++
+
+
+    
+                    
+==== Attributes
+[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
+|======================
+|Name |Java Type | Description | Default Value | Required
+| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
+
+
+
+| 
+accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
+
+
+
+
+| 
+title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The title of this video.+++ |  | *x*{nbsp}
+
+
+
+
+| 
+introduction  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A description for this video.+++ |  | *x*{nbsp}
+
+
+
+
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+
+
+
+
+| 
+attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler>+++ | +++Attached file+++ | #[message.inboundAttachments] | {nbsp}
+
+
+|======================
+
+==== Returns
+[cols=".^40%,.^60%", options="header"]
+|======================
+|Return Java Type | Description
+|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++HashMap+++
+|======================
+
+
+
+
+---
+
+=== Upload permanent thumb file
+`<wechat:upload-permanent-thumb-file>`
+
+
+
+
++++
+Upload Permanent Thumb Material
+</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
++++
+
+
+    
+                
+==== Attributes
+[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
+|======================
+|Name |Java Type | Description | Default Value | Required
+| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
+
+
+
+| 
+accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
+
+
+
+
+| 
+title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The title of this thumb.+++ |  | *x*{nbsp}
 
 
 
@@ -669,65 +903,6 @@ hqMusicUrl  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 | 
 thumbMediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The media ID of the thumb+++ |  | *x*{nbsp}
-
-
-|======================
-
-==== Returns
-[cols=".^40%,.^60%", options="header"]
-|======================
-|Return Java Type | Description
-|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++Hashmap+++
-|======================
-
-
-
-
----
-
-=== Customer rich media message
-`<wechat:customer-rich-media-message>`
-
-
-
-icon:cloud[] {nbsp} DataSense enabled
-
-+++
-Send Customer Rich Media Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Rich_Media_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Rich_Media_Message</a>
-+++
-
-
-    
-                    
-==== Attributes
-[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
-|======================
-|Name |Java Type | Description | Default Value | Required
-| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
-
-
-
-| 
-accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
-
-
-
-
-| 
-openId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Follower's openId+++ |  | *x*{nbsp}
-
-
-
-
-| 
-ApiName icon:key[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Customer Rich Media Message+++ | CustomerRichMediaMessage | {nbsp}
-
-
-
-
-| 
-articles icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html">List</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>>+++ | +++Articles of Customer Rich Media Message API+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -1323,7 +1498,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 | 
-mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++ID of the message to be broadcast+++ |  | *x*{nbsp}
+mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++here is obtained on Basic Support->Transferring Multimedia Files+++ |  | *x*{nbsp}
 
 
 
@@ -1348,52 +1523,6 @@ ApiName icon:key[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/l
 
 | 
 toUser icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++List of Follower's openId+++ | #[payload] | {nbsp}
-
-
-|======================
-
-==== Returns
-[cols=".^40%,.^60%", options="header"]
-|======================
-|Return Java Type | Description
-|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>>+++ | +++Hashmap+++
-|======================
-
-
-
-
----
-
-=== Delete broadcast message
-`<wechat:delete-broadcast-message>`
-
-
-
-
-+++
-Broadcast Message Deletion
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Broadcast_Message_Deletion">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Broadcast_Message_Deletion</a>
-+++
-
-
-    
-        
-==== Attributes
-[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
-|======================
-|Name |Java Type | Description | Default Value | Required
-| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
-
-
-
-| 
-accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true+++ |  | {nbsp}
-
-
-
-
-| 
-msgId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Message ID returned after a message is broadcast+++ |  | *x*{nbsp}
 
 
 |======================

@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.mule.modules.wechat.WechatConnector;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
-public class UploadImageFileTestCases extends AbstractTestCase<WechatConnector> {
+public class UploadTemporaryImageFileTestCases extends AbstractTestCase<WechatConnector> {
 
-	public UploadImageFileTestCases() {
+	public UploadTemporaryImageFileTestCases() {
 		super(WechatConnector.class);
 	}
 
@@ -32,7 +32,7 @@ public class UploadImageFileTestCases extends AbstractTestCase<WechatConnector> 
 		javax.activation.DataSource fds = new javax.activation.FileDataSource(System.getProperty("user.dir") + "/src/test/java/file/Image.jpg");
 		java.util.Map<java.lang.String, javax.activation.DataHandler> attachment = new java.util.HashMap<java.lang.String, javax.activation.DataHandler>();
 		attachment.put("file", new javax.activation.DataHandler(fds));
-		assertEquals(getConnector().uploadImageFile(accessToken, payload, attachment).containsKey("media_id"), expected.containsKey("media_id"));
+		assertEquals(getConnector().uploadTemporaryImageFile(accessToken, payload, attachment).containsKey("media_id"), expected.containsKey("media_id"));
 	}
 
 }

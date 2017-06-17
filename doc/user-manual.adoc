@@ -279,19 +279,16 @@ image:wechat-autoReplyEncryptedMessages.png[wechat-autoReplyEncryptedMessages]
 ----
 
 [use-case-3]
-=== Upload Image Material
+=== Upload permanent Image Material
 Use <wechat:upload-image-file> to upload image files to the WeChat server. The system then returns a corresponding media ID that enables official accounts to obtain multimedia files. An example of a successful JSON response is as follows:
 
 [source, xml,linenums]
 ----
 {
-  "type":"TYPE",
   "media_id":"MEDIA_ID",
-  "created_at":123456789
+  "url":"URL"
 }
 ----
-
-Note that multimedia files are removed from the WeChat server after three days to recycle space.
 
 image:wechat-uploadImageFile.png[wechat-uploadImageFile]
 
@@ -299,7 +296,7 @@ image:wechat-uploadImageFile.png[wechat-uploadImageFile]
 ----
 <flow name="wechat-uploadImageFile">
   <http:listener config-ref="HTTP_Listener_Configuration" path="/file" doc:name="HTTP"/>
-  <wechat:upload-image-file config-ref="Wechat__Configuration" doc:name="Wechat uploadImageFile"/>
+  <wechat:upload-permanent-image-file config-ref="Wechat__Configuration" doc:name="Wechat uploadImageFile" accessToken="#[common.CustomClass.getToken()]" title="UploadImage"/>
   <logger message="#[payload]" level="INFO" doc:name="Logger"/>
 </flow>
 ----

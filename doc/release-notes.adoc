@@ -41,17 +41,20 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 
 . Message decryption - Authenticate message validity and obtain decrypted message. 
 . Message encrytion - Encrypt a reply message from an official account 
-. Upload image file - Upload Temporary Image Material 
-. Upload voice file - Upload Temporary Voice Material
-. Upload video file - Upload Temporary Video Material
-. Upload thumb file - Upload Temporary Thumb Material
+. Upload permanent image file - Upload Temporary Image Material 
+. Upload permanent voice file - Upload Temporary Voice Material
+. Upload permanent video file - Upload Temporary Video Material
+. Upload permanent thumb file - Upload Temporary Thumb Material
+. Upload temporary image file - Upload Temporary Image Material 
+. Upload temporary voice file - Upload Temporary Voice Material
+. Upload temporary video file - Upload Temporary Video Material
+. Upload temporary thumb file - Upload Temporary Thumb Material
 . Obtain multimedia file - Obtaining Multimedia Files 
 . Customer text message - Send Customer Text Message to OpenId 
 . Customer image message - Send Customer Image Message to OpenId 
 . Customer audio message - Send Customer Audio Message to OpenId 
 . Customer video message - Send Customer Video Message to OpenId
 . Customer music message - Send Customer Music Message to OpenId 
-. Customer rich media message - Send Customer Rich Media Message to OpenId 
 . Upload article message data - Upload Article Message Data 
 . Group based broadcast article - Group-Based Broadcast Article 
 . Group based broadcast text - Group-Based Broadcast Text
@@ -63,7 +66,6 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 . Open id list broadcast voice - OpenID List-Based Broadcast Voice 
 . Open id list broadcast image - OpenID List-Based Broadcast Image 
 . Open id list broadcast video - OpenID List-Based Broadcast Video 
-. Delete broadcast message - Broadcast Message Deletion
 . Preview broadcast article - Send Preview Broadcast Article to OpenId 
 . Preview broadcast text - Send Preview Broadcast Text to OpenId 
 . Preview broadcast voice - Send Preview Broadcast Voice to OpenId 

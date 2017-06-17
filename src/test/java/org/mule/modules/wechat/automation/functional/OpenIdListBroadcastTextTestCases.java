@@ -26,11 +26,11 @@ public class OpenIdListBroadcastTextTestCases extends AbstractTestCase<WechatCon
 	@Test
 	public void verify() throws Exception {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
-		expected.put("errcode", 45065);
-		expected.put("errmsg", "clientmsgid exist");
+		expected.put("errcode", 0);
+		expected.put("errmsg", "send job submission success");
 		expected.put("msg_id", "3147483650");
 		java.lang.String accessToken = null;
-		java.lang.String content = "OpenIdList Broadcast";
+		java.lang.String content = "OpenIdList Broadcast" + System.currentTimeMillis();
 		java.lang.String ApiName = "OpenIDListBroadcastText";
 		java.util.Map<java.lang.String, java.lang.Object> toUser = new java.util.HashMap<String, Object>();
 		toUser.put("touser", java.util.Arrays.asList("oRwGLwz_vjiN-rogxjjUoSzfPzWs","oRwGLwzaDc9z6IRhMyfBtjWs_mao"));

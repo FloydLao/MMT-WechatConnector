@@ -17,6 +17,7 @@ Wechat International-Market API
 . Wechat Message Decryption
 . Wechat Message Encryption
 . Wechat Temporary Multimedia File
+. Wechat Permanent Multimedia File
 . Wechat Customer Cessage
 . Wechat Broadcast
 . Wechat Follower List

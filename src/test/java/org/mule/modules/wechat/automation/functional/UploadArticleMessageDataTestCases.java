@@ -31,7 +31,15 @@ public class UploadArticleMessageDataTestCases extends AbstractTestCase<WechatCo
 		java.lang.String ApiName = "UploadArticleMessageData";
 		java.util.List<java.util.Map<java.lang.String, java.lang.Object>> articles =  null;
 		java.util.Map<java.lang.String, java.lang.Object> _articles = new java.util.HashMap<String, Object>();
-		_articles.put("thumb_media_id", "vvh5tN0KLJ9kgQPuv5Ll_Bxtx3vN_KXykk6C4AW8Y8emlgNlyuQfFKdn05zqlla2");
+		
+        //Upload a thumb image to get the thumbMediaId
+		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+		javax.activation.DataSource fds = new javax.activation.FileDataSource(System.getProperty("user.dir") + "/src/test/java/file/Thumb.jpg");
+		java.util.Map<java.lang.String, javax.activation.DataHandler> attachment = new java.util.HashMap<java.lang.String, javax.activation.DataHandler>();
+		attachment.put("file", new javax.activation.DataHandler(fds));
+		java.lang.String thumbMediaId  = String.valueOf(getConnector().uploadTemporaryThumbFile(accessToken, payload, attachment).get("thumb_media_id"));
+		
+		_articles.put("thumb_media_id", thumbMediaId);
 		_articles.put("author", "Test Person");
 		_articles.put("title", "Article Message Title");
 		_articles.put("content_source_url", "www.qq.com");

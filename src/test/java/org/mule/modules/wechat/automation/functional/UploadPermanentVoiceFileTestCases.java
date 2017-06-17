@@ -10,9 +10,9 @@ import org.junit.Test;
 import org.mule.modules.wechat.WechatConnector;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
-public class UploadVoiceFileTestCases extends AbstractTestCase<WechatConnector> {
+public class UploadPermanentVoiceFileTestCases extends AbstractTestCase<WechatConnector> {
 
-	public UploadVoiceFileTestCases() {
+	public UploadPermanentVoiceFileTestCases() {
 		super(WechatConnector.class);
 	}
 
@@ -31,6 +31,7 @@ public class UploadVoiceFileTestCases extends AbstractTestCase<WechatConnector> 
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
 		expected.put("media_id", "");
 		java.lang.String accessToken = null;
+		java.lang.String title = "UploadVoice";
 		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 		MimetypesFileTypeMap mfm = new MimetypesFileTypeMap();
 		mfm.addMimeTypes("audio/mp3 mp3");
@@ -38,7 +39,7 @@ public class UploadVoiceFileTestCases extends AbstractTestCase<WechatConnector> 
 		fds.setFileTypeMap(mfm);
 		java.util.Map<java.lang.String, DataHandler> attachment = new java.util.HashMap<java.lang.String, DataHandler>();
 		attachment.put("file", new DataHandler(fds));
-		assertEquals(getConnector().uploadVoiceFile(accessToken, payload, attachment).containsKey("media_id"), expected.containsKey("media_id"));
+		assertEquals(getConnector().uploadPermanentVoiceFile(accessToken, title, payload, attachment).containsKey("media_id"), expected.containsKey("media_id"));
 	}
 
 }

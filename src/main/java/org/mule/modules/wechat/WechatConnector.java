@@ -210,7 +210,7 @@ public class WechatConnector {
      * @throws Exception
      */
     @Processor
-    public Map<String, Object> uploadImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    public Map<String, Object> uploadTemporaryImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
@@ -238,7 +238,7 @@ public class WechatConnector {
      * @throws Exception
      */
     @Processor
-    public Map<String, Object> uploadVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    public Map<String, Object> uploadTemporaryVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
@@ -266,7 +266,7 @@ public class WechatConnector {
      * @throws Exception
      */
     @Processor
-    public Map<String, Object> uploadVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    public Map<String, Object> uploadTemporaryVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
@@ -294,7 +294,7 @@ public class WechatConnector {
      * @throws Exception
      */
     @Processor
-    public Map<String, Object> uploadThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    public Map<String, Object> uploadTemporaryThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
     	Map<String, Object> map = null;
     	if (attachment.size() > 0) {
@@ -307,6 +307,123 @@ public class WechatConnector {
             // Post to Wechat
     		HttpsConnection con = new HttpsConnection();
     	    map = con.postFile(httpsURL, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	}
+	    
+        return map;
+    }
+    
+    /**
+     * Upload Permanent Image Material
+     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+	 *
+     * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param title The title of this image.
+     * @param attachment Attached file
+     * @return HashMap
+     * @throws Exception
+     */
+    @Processor
+    public Map<String, Object> uploadPermanentImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    	String httpsURL = "";
+    	Map<String, Object> map = null;
+    	if (attachment.size() > 0) {
+    		if (!config.getSelfManageAccessToken()){
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=image";
+        	} else {
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + accessToken + "&type=image";
+        	}
+    		
+            // Post to Wechat
+    		HttpsConnection con = new HttpsConnection();
+    	    map = con.postFile(httpsURL, title, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	}
+	    
+        return map;
+    }
+    
+    /**
+     * Upload Permanent Voice Material
+     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+	 *
+     * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param title The title of this voice.
+     * @param attachment Attached file
+     * @return HashMap
+     * @throws Exception
+     */
+    @Processor
+    public Map<String, Object> uploadPermanentVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    	String httpsURL = "";
+    	Map<String, Object> map = null;
+    	if (attachment.size() > 0) {
+    		if (!config.getSelfManageAccessToken()){
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=voice";
+        	} else {
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + accessToken + "&type=voice";
+        	}
+    		
+            // Post to Wechat
+    		HttpsConnection con = new HttpsConnection();
+    	    map = con.postFile(httpsURL, title, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	}
+	    
+        return map;
+    }
+    
+    /**
+     * Upload Permanent Video Material
+     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+	 *
+     * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param title The title of this video.
+     * @param introduction A description for this video.
+     * @param attachment Attached file
+     * @return HashMap
+     * @throws Exception
+     */
+    @Processor
+    public Map<String, Object> uploadPermanentVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, String introduction, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    	String httpsURL = "";
+    	Map<String, Object> map = null;
+    	if (attachment.size() > 0) {
+    		if (!config.getSelfManageAccessToken()){
+				httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=video";
+        	} else {
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + accessToken + "&type=video";
+        	}
+    		
+            // Post to Wechat
+    		HttpsConnection con = new HttpsConnection();
+    	    map = con.postFile(httpsURL, title, introduction, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
+    	}
+	    
+        return map;
+    }
+    
+    /**
+     * Upload Permanent Thumb Material
+     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+	 *
+     * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param title The title of this thumb.
+     * @param attachment Attached file
+     * @return HashMap
+     * @throws Exception
+     */
+    @Processor
+    public Map<String, Object> uploadPermanentThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
+    	String httpsURL = "";
+    	Map<String, Object> map = null;
+    	if (attachment.size() > 0) {
+    		if (!config.getSelfManageAccessToken()){
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=thumb";
+        	} else {
+        		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + accessToken + "&type=thumb";
+        	}
+    		
+            // Post to Wechat
+    		HttpsConnection con = new HttpsConnection();
+    	    map = con.postFile(httpsURL, title, java.util.Optional.ofNullable(attachment.values().iterator().next()).orElse(null));
     	}
 	    
         return map;
@@ -484,50 +601,6 @@ public class WechatConnector {
         subObj.put("hqmusicurl", hqMusicUrl);
         subObj.put("thumb_media_id", thumbMediaId);
         obj.put("music", subObj);
-    	
-        // Post to Wechat
-    	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.post(httpsURL, obj.toString());
-	    
-        return map;
-    }
-
-    /**
-     * Send Customer Rich Media Message to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Rich_Media_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Rich_Media_Message</a>
-     * 
-     * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
-     * @param openId Follower's openId
-     * @param ApiName Customer Rich Media Message
-     * @param articles Articles of Customer Rich Media Message API
-     * @return Hashmap
-     * @throws Exception
-     */
-    @Processor
-    public Map<String, Object> customerRichMediaMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Placement(order = 1) String openId , @MetaDataKeyParam @Default("CustomerRichMediaMessage") String ApiName, @Default("#[payload]") List<Map<String,Object>> articles) throws Exception {
-    	String httpsURL = "";
-    	if (!config.getSelfManageAccessToken()){
-    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + WechatConnector.accessToken;
-    	} else {
-    		httpsURL = "https://api.wechat.com/cgi-bin/message/custom/send?access_token=" + accessToken;
-    	}
-    	
-    	// Create Text Message JSON
-    	JSONObject obj = new JSONObject();
-        obj.put("touser", openId);
-        obj.put("msgtype", "news");
-        JSONObject subObj = new JSONObject();
-        JSONArray arraySubObj = new JSONArray();
-        for (Map<String,Object> article : articles) {
-        	JSONObject _subObj = new JSONObject();
-        	_subObj.put("title", article.getOrDefault("title", ""));
-        	_subObj.put("description", article.getOrDefault("description", ""));
-        	_subObj.put("url", article.getOrDefault("url", ""));
-        	_subObj.put("picurl", article.getOrDefault("picurl", ""));
-        	arraySubObj.put(_subObj);
-        }
-        subObj.put("articles", arraySubObj);
-        obj.put("news", subObj);
     	
         // Post to Wechat
     	HttpsConnection con = new HttpsConnection();
@@ -911,7 +984,7 @@ public class WechatConnector {
      * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
-     * @param mediaId ID of the message to be broadcast
+     * @param mediaId here is obtained on Basic Support->Transferring Multimedia Files
      * @param title The title of the message
      * @param description The description of the message
      * @param ApiName OpenID List Broadcast Video
@@ -941,36 +1014,7 @@ public class WechatConnector {
         }
     	
         // Post to Wechat
-    	HttpsConnection con = new HttpsConnection();
-	    Map<String, Object> map = con.post(httpsURL, obj.toString());
-	    
-        return map;
-    }
-    
-    /**
-     * Broadcast Message Deletion
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Broadcast_Message_Deletion">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Broadcast_Message_Deletion</a>
-     * 
-     * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
-     * @param msgId Message ID returned after a message is broadcast
-     * @return Hashmap
-     * @throws Exception
-     */
-    @Processor
-    public Map<String, Object> deleteBroadcastMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String msgId) throws Exception {
-    	String httpsURL = "";
-    	if (!config.getSelfManageAccessToken()){
-    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/delete?access_token=" + WechatConnector.accessToken;
-    	} else {
-    		httpsURL = "https://api.wechat.com/cgi-bin/message/mass/delete?access_token=" + accessToken;
-    	}
-    	
-    	// Create Text Message JSON
-    	JSONObject obj = new JSONObject();
-        obj.put("msgid", msgId);
-    	
-        // Post to Wechat
-    	HttpsConnection con = new HttpsConnection();
+        HttpsConnection con = new HttpsConnection();
 	    Map<String, Object> map = con.post(httpsURL, obj.toString());
 	    
         return map;

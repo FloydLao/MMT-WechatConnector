@@ -26,12 +26,33 @@ public class GroupBasedBroadcastArticleTestCases extends AbstractTestCase<Wechat
 	@Test
 	public void verify() throws Exception {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
-		expected.put("errcode", 45065);
-		expected.put("errmsg", "clientmsgid exist");
+		expected.put("errcode", 0);
+		expected.put("errmsg", "send job submission success");
 		expected.put("msg_id", "3147483650");
+		
+        //Upload a thumb image to get the thumbMediaId
 		java.lang.String accessToken = null;
+		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+		javax.activation.DataSource fds = new javax.activation.FileDataSource(System.getProperty("user.dir") + "/src/test/java/file/Thumb.jpg");
+		java.util.Map<java.lang.String, javax.activation.DataHandler> attachment = new java.util.HashMap<java.lang.String, javax.activation.DataHandler>();
+		attachment.put("file", new javax.activation.DataHandler(fds));
+		java.lang.String thumbMediaId  = String.valueOf(getConnector().uploadTemporaryThumbFile(accessToken, payload, attachment).get("thumb_media_id"));
+		
+		//Upload a article message to get the mediaId
+		java.lang.String ApiName = "UploadArticleMessageData";
+		java.util.List<java.util.Map<java.lang.String, java.lang.Object>> articles =  null;
+		java.util.Map<java.lang.String, java.lang.Object> _articles = new java.util.HashMap<String, Object>();
+		_articles.put("thumb_media_id", thumbMediaId);
+		_articles.put("author", "Test Person");
+		_articles.put("title", "Article Message Title");
+		_articles.put("content_source_url", "www.qq.com");
+		_articles.put("content", "Article Message Content");
+		_articles.put("digest", "Article Message Digest");
+		_articles.put("show_cover_pic", 0);
+		articles = java.util.Arrays.asList(_articles);
+		
 		java.lang.String groupId = "110";
-		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXIs9NJG_saO9m0yrn1cOc3Po";
+		java.lang.String mediaId = String.valueOf(getConnector().uploadArticleMessageData(accessToken, ApiName, articles).get("media_id"));
 		assertEquals(getConnector().groupBasedBroadcastArticle(accessToken, groupId, mediaId).get("errcode"), expected.get("errcode"));
 	}
 

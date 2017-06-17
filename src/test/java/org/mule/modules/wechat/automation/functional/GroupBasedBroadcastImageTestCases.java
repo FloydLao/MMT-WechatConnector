@@ -26,12 +26,22 @@ public class GroupBasedBroadcastImageTestCases extends AbstractTestCase<WechatCo
 	@Test
 	public void verify() throws Exception {
 		java.util.Map<java.lang.String, java.lang.Object> expected = new java.util.HashMap<String, Object>();
-		expected.put("errcode", 45065);
-		expected.put("errmsg", "clientmsgid exist");
+		expected.put("errcode", 0);
+		expected.put("errmsg", "send job submission success");
 		expected.put("msg_id", "3147483650");
+
+		//Upload a image to get the mediaId
 		java.lang.String accessToken = null;
+		java.lang.String title = "UploadImage";
+		org.w3c.dom.Document payload = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+		javax.activation.DataSource fds = new javax.activation.FileDataSource(System.getProperty("user.dir") + "/src/test/java/file/Image.jpg");
+		java.util.Map<java.lang.String, javax.activation.DataHandler> attachment = new java.util.HashMap<java.lang.String, javax.activation.DataHandler>();
+		attachment.put("file", new javax.activation.DataHandler(fds));
+		
 		java.lang.String groupId = "110";
-		java.lang.String mediaId = "t6Spy95et4P_TBbsrjDXItelK7mP9sLc1XuiFWIDzEs";
+		java.lang.String mediaId = String.valueOf(getConnector().uploadPermanentImageFile(accessToken, title, payload, attachment).get("media_id"));
+		//Wait for the image to be process
+		Thread.sleep(3000);
 		assertEquals(getConnector().groupBasedBroadcastImage(accessToken, groupId, mediaId).get("errcode"), expected.get("errcode"));
 	}
 
