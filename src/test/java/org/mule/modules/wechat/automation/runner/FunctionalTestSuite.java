@@ -21,8 +21,6 @@ import org.mule.modules.wechat.automation.functional.EditingTagTestCases;
 import org.mule.modules.wechat.automation.functional.DeletingTagTestCases;
 import org.mule.modules.wechat.automation.functional.GetFollowerListTestCases;
 import org.mule.modules.wechat.automation.functional.GetUserProfileTestCases;
-import org.mule.modules.wechat.automation.functional.MessageDecryptionTestCases;
-import org.mule.modules.wechat.automation.functional.MessageEncrytionTestCases;
 import org.mule.modules.wechat.automation.functional.ObtainBlacklistTestCases;
 import org.mule.modules.wechat.automation.functional.ObtainFollowerTagsTestCases;
 import org.mule.modules.wechat.automation.functional.ObtainFollowersWithTagTestCases;

@@ -32,6 +32,7 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.Source;
 import org.mule.api.annotations.SourceStrategy;
 import org.mule.api.annotations.display.Placement;
+import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.callback.SourceCallback;
 import org.mule.api.annotations.lifecycle.OnException;
 import org.mule.api.annotations.param.Default;
@@ -44,9 +45,10 @@ import org.mule.modules.wechat.error.ErrorHandler;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Connector(name="wechat", friendlyName="Wechat")
+@Connector(name="wechat", friendlyName="Wechat", minMuleVersion="3.8.0")
 @MetaDataScope( DataSenseResolver.class )
 @OnException(handler=ErrorHandler.class)
+@RequiresEnterpriseLicense(allowEval = true)
 public class WechatConnector {
 
     @Config
@@ -1641,16 +1643,20 @@ public class WechatConnector {
     }
 
     /**
-     *  Get Access Token
-     *  </br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
-     *
-     *  @param callback Hashmap
-     *  @throws Exception error produced while processing the payload
+     * Get Access Token
+     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
+     * 
+     * @param callback Hashmap
+     * @param appId Other official account's AppID
+     * @param appSecret Other official account's AppSecret
+     * @throws Exception error produced while processing the payload
      */
     @Source(sourceStrategy = SourceStrategy.POLLING,pollingPeriod=6600000)
-    public void getAccessToken(SourceCallback callback) throws Exception {
-    	String httpsURL = "https://api.wechat.com/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
-	    
+    public void getAccessToken(SourceCallback callback, @Optional String otherAppId, @Optional String otherAppSecret) throws Exception {
+    	String httpsURL = "https://api.wechat.com/cgi-bin/token?grant_type=client_credential&appid=" + otherAppId + "&secret=" + otherAppSecret;
+    	if (otherAppId == null && otherAppSecret == null) {
+    		httpsURL = "https://api.wechat.com/cgi-bin/token?grant_type=client_credential&appid=" + config.getAppId() + "&secret=" + config.getAppSecret();
+    	}
     	HttpsConnection con = new HttpsConnection();
 	    Map<String, Object> map = con.get(httpsURL);
 	    
