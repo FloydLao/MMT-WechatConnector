@@ -14,8 +14,6 @@ Wechat International-Market API
 
 ## Service or application supported modules
 
-. Wechat Message Decryption
-. Wechat Message Encryption
 . Wechat Temporary Multimedia File
 . Wechat Permanent Multimedia File
 . Wechat Customer Cessage

@@ -53,7 +53,7 @@ The Wechat connector requires the following dependencies:
 [%header,cols="50a,50a"]
 |===
 |Application/Service |Version
-|*Anypoint Studio* |3.8
+|*Anypoint Studio* |6
 |*Mule Runtime* |EE 3.8.0 and above
 |*Java* |JDK 8 and above
 
@@ -190,7 +190,7 @@ image:wechat-verifyUrl.png[wechat-verifyUrl]
 
 [source, xml,linenums]
 ----
-<flow name="wechat-autoReplyEncryptedMessages">
+<flow name="wechat-autoReplyMessages">
   <http:listener config-ref="HTTP_Listener_Configuration" path="/msg" doc:name="HTTP"/>
   <choice doc:name="Check &quot;echostr&quot;">
     <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
@@ -198,73 +198,15 @@ image:wechat-verifyUrl.png[wechat-verifyUrl]
       <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </when>
     <otherwise>
-      <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-    </otherwise>
-  </choice>
-</flow>
-----
-
-[use-case-2]
-=== Auto-Reply Encrypted Messages
-After encryption/decryption is enabled (i.e. compatibility mode or security mode is selected), new parameters (encryption type and message signature) will appear in the URL to reflect the new settings. When a WeChat user sends a message to an Official Account, the WeChat Official Account Admin System POSTs an XML data package to the URL provided by the developer.
-
-[source, xml,linenums]
-----
-<xml>
-  <ToUserName><![CDATA[gh_10f6c3c3ac5a]]></ToUserName>
-  ……
-  <Encrypt><![CDATA[hQM/NS0ujPGbF+/8yVe61E3mUVWVO1izRlZdyv26zrVUSE3zUEBdcXITxjbjiHH38kexVdpQLCnRfbrqny1yGvgqqKTGKxJWWQ9D5WiiUKxavHRNzYVzAjYkp7esNGy7HJcl/P3BGarQF3+AWyNQ5w7xax5GbOwiXD54yri7xmNMHBOHapDzBslbnTFiEy+8sjSl4asNbn2+ZVBpqGsyKDv0ZG+DlSlXlW+gNPVLP+YxeUhJcyfp91qoa0FJagRNlkNul4mGz+sZXJs0WF7lPx6lslDGW3J66crvIIx/klpl0oa/tC6n/9c8OFQ9pp8hrLq7B9EaAGFlIyz5UhVLiWPN97JkL6JCfxVooVMEKcKRrrlRDGe8RWVM3EW/nxk9Ic37lYY5j97YZfq375AoTBdGDtoPFZsvv3Upyut1i6G0JRogUsMPlyZl9B8Pl/wcA7k7i4LYMr2yK4SxNFrBUw==]]></Encrypt>
-</xml>
-----
-
-Past it and URI to <wechat:message-decryption>, URI parameters should contain: msg_signature (note that it is msg_signature, not signature), timestamp, and nonce as well as encrypt_msg. If it proccess successful, sMsg will be returned, containing the following XML content in plaintext format:
-
-[source, xml,linenums]
-----
-<xml>
-  <ToUserName><![CDATA[gh_10f6c3c3ac5a]]></ToUserName>
-  <FromUserName><![CDATA[oyORnuP8q7ou2gfYjqLzSIWZf0rs]]></FromUserName>
-  <CreateTime>1411035097</CreateTime>
-  <MsgType><![CDATA[text]]></MsgType>
-  <Content><![CDATA[this is a test message]]></Content>
-  <MsgId>6060349595123187712</MsgId>
-</xml>
-----
-
-Use <wechat:message-encrytion> to encrypt the reply message. If encryption succeeds, sEncryptMsg is an encrypted message, as shown below:
-
-[source, xml,linenums]
-----
-<xml>
-  <Encrypt><![CDATA[LDFAmKFr7U/RMmwRbsR676wjym90byw7+hhh226e8bu6KVYy00HheIsVER4eMgz/VBtofSaeXXQBz6fVdkN2CzBUaTtjJeTCXEIDfTBNxpw/QRLGLqqMZHA3I+JiBxrrSzd2yXuXst7TdkVgY4lZEHQcWk85x1niT79XLaWQog+OnBV31eZbXGPPv8dZciKqGo0meTYi+fkMEJdyS8OE7NjO79vpIyIw7hMBtEXPBK/tJGN5m5SoAS6I4rRZ8Zl8umKxXqgr7N8ZOs6DB9tokpvSl9wT9T3E62rufaKP5EL1imJUd1pngxy09EP24O8Th4bCrdUcZpJio2l11vE6bWK2s5WrLuO0cKY2GP2unQ4fDxh0L4ePmNOVFJwp9Hyvd0BAsleXA4jWeOMw5nH3Vn49/Q/ZAQ2HN3dB0bMA+6KJYLvIzTz/Iz6vEjk8ZkK+AbhW5eldnyRDXP/OWfZH2P3WQZUwc/G/LGmS3ekqMwQThhS2Eg5t4yHv0mAIei07Lknip8nnwgEeF4R9hOGutE9ETsGG4CP1LHTQ4fgYchOMfB3wANOjIt9xendbhHbu51Z4OKnA0F+MlgZomiqweT1v/+LUxcsFAZ1J+Vtt0FQXElDKg+YyQnRCiLl3I+GJ/cxSj86XwClZC3NNhAkVU11SvxcXEYh9smckV/qRP2Acsvdls0UqZVWnPtzgx8hc8QBZaeH+JeiaPQD88frNvA==]]></Encrypt>
-  <MsgSignature><![CDATA[8d9521e63f84b2cd2e0daa124eb7eb0c34b6204a]]></MsgSignature>
-  <TimeStamp>1411034505</TimeStamp>
-  <Nonce><![CDATA[1351554359]]></Nonce>
-</xml>
-----
-
-image:wechat-autoReplyEncryptedMessages.png[wechat-autoReplyEncryptedMessages]
-
-[source, xml,linenums]
-----
-<flow name="wechat-autoReplyEncryptedMessages">
-  <http:listener config-ref="HTTP_Listener_Configuration" path="/message" doc:name="HTTP"/>
-  <choice doc:name="Check &quot;echostr&quot;">
-    <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
-      <wechat:verify-url config-ref="Wechat__Configuration" doc:name="Wechat verifyUrl"/>
-      <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-    </when>
-    <otherwise>
-      <wechat:message-decryption config-ref="Wechat__Configuration" doc:name="Wechat messageDecryption" encodingAesKey="UcNGigaETbwSX4neAykOm8YAPQyRGDXtZziW5llbeYI" />
-      <logger message="#[payload]#" level="INFO" doc:name="Keyword Matching"/>
-      <dw:transform-message doc:name="Transform Message">
+      <logger message="Msg: #[payload]" level="INFO" doc:name="Keyword Matching"/>
+      <dw:transform-message doc:name="Reply Message">
         <dw:set-payload><![CDATA[%dw 1.0
 %output application/xml
 ---
 {
   xml: {
-    ToUserName: "oUasjhdf83LHF92jshfKJ_8CCdlU" as :cdata,
-    FromUserName: "gh_a8dc7dfb8bd9" as :cdata,
+    ToUserName: "oRwGLwz_vjiN-rogxjjUoSzfPzWs" as :cdata,
+    FromUserName: "gh_a62a2f2821be" as :cdata,
     CreateTime: 1489683323,
     MsgType: "text" as :cdata,
     Content: "Hello World!" as :cdata,
@@ -272,13 +214,13 @@ image:wechat-autoReplyEncryptedMessages.png[wechat-autoReplyEncryptedMessages]
   }
 }]]></dw:set-payload>
       </dw:transform-message>
-      <wechat:message-encrytion config-ref="Wechat__Configuration" encodingAesKey="UcNGigaETbwSX4neAykOm8YAPQyRGDXtZziW5llbeYI" doc:name="Wechat messageEncrytion"/>
+      <logger message="Send Msg: #[payload]" level="INFO" doc:name="Logger"/>
     </otherwise>
   </choice>
 </flow>
 ----
 
-[use-case-3]
+[use-case-2]
 === Upload permanent Image Material
 Use <wechat:upload-image-file> to upload image files to the WeChat server. The system then returns a corresponding media ID that enables official accounts to obtain multimedia files. An example of a successful JSON response is as follows:
 
@@ -301,7 +243,7 @@ image:wechat-uploadImageFile.png[wechat-uploadImageFile]
 </flow>
 ----
 
-[use-case-4]
+[use-case-3]
 === Manage Access Token
 By default, Wechat connector is handling access token for you. If you want to manage it by yourself, select *Self Manage Access Token* in Wechat *Advanced* global configuration.
 
@@ -343,7 +285,7 @@ In each operation which needs access token to request wechat API, there is *Acce
 
 image:wechat-operationAccessToken.png[wechat-operationAccessToken]
 
-[use-case-5]
+[use-case-4]
 === Operation with Mule DataSense
 Some of the input structure of wechat API is complicated. Like <wechat:open-id-list-broadcast-text>, it split into two field and one of the field is mapping metadata using Mule DataSense.
 

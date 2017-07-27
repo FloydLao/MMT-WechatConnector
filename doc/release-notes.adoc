@@ -32,15 +32,13 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 [%header%autowidth]
 |===
 |Software |Version
-|Anypoint Studio  |3.8
+|Anypoint Studio  |6
 |Mule Runtime |EE 3.8.0 and above
 |Java |JDK 8 and above
 |===
 
 === Features
 
-. Message decryption - Authenticate message validity and obtain decrypted message. 
-. Message encrytion - Encrypt a reply message from an official account 
 . Upload permanent image file - Upload Temporary Image Material 
 . Upload permanent voice file - Upload Temporary Voice Material
 . Upload permanent video file - Upload Temporary Video Material

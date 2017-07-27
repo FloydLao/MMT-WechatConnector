@@ -1,9 +1,6 @@
 /**
- * 对公众平台发送给公众账号的消息加解密示例代码.
- * 
- * @copyright Copyright (c) 1998-2014 Tencent Inc.
+ * (c) 2003-2017 MMT, Inc. The software in this package is published under the terms of the Commercial Free Software license V.1, a copy of which has been included with this distribution in the LICENSE.md file.
  */
-
 // ------------------------------------------------------------------------
 
 package org.mule.modules.wechat.encrytion;

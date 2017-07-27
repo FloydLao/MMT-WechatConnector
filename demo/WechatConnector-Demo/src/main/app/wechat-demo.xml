@@ -10,9 +10,9 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="80" doc:name="HTTP Listener Configuration"/>
-    <wechat:config-wechat name="Wechat__Configuration" appId="wx47b6603c2007770b" appSecret="db03ad92747fa53d4ac27dff4b072211" token="weiphp" doc:name="Wechat: Configuration" />
+    <wechat:config-wechat name="Wechat__Configuration" appId="${appID}" appSecret="${appSecret}" token="${token}" doc:name="Wechat: Configuration" />
     <http:request-config name="HTTP_Request_Configuration" protocol="HTTPS" host="api.weixin.qq.com" port="443" doc:name="HTTP Request Configuration"/>
-    <flow name="wechat-autoReplyEncryptedMessages">
+    <flow name="wechat-autoReplyMessages">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/msg" doc:name="HTTP"/>
         <choice doc:name="Check &quot;echostr&quot;">
             <when expression="#[message.inboundProperties.'http.request.uri'.contains(&quot;echostr&quot;)]">
@@ -20,9 +20,8 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
                 <logger message="#[payload]" level="INFO" doc:name="Logger"/>
             </when>
             <otherwise>
-                <wechat:message-decryption config-ref="Wechat__Configuration" doc:name="Wechat messageDecryption" encodingAesKey="ig7gFVnrXDaK5koZooBGCeysMSGI8H34PKeybRQ96pe" />
-                <logger message="Decryted Msg: #[payload]" level="INFO" doc:name="Keyword Matching"/>
-                <dw:transform-message doc:name="Transform Message">
+                <logger message="Msg: #[payload]" level="INFO" doc:name="Keyword Matching"/>
+                <dw:transform-message doc:name="Reply Message">
                     <dw:set-payload><![CDATA[%dw 1.0
 %output application/xml
 ---
@@ -37,7 +36,6 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	}
 }]]></dw:set-payload>
                 </dw:transform-message>
-                <wechat:message-encrytion config-ref="Wechat__Configuration" encodingAesKey="ig7gFVnrXDaK5koZooBGCeysMSGI8H34PKeybRQ96pe" doc:name="Wechat messageEncrytion"/>
                 <logger message="Send Msg: #[payload]" level="INFO" doc:name="Logger"/>
             </otherwise>
         </choice>

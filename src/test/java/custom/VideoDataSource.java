@@ -1,3 +1,6 @@
+/**
+ * (c) 2003-2017 MMT, Inc. The software in this package is published under the terms of the Commercial Free Software license V.1, a copy of which has been included with this distribution in the LICENSE.md file.
+ */
 package custom;
 
 import java.io.File;
@@ -17,25 +20,21 @@ public class VideoDataSource implements DataSource {
 
 	@Override
 	public String getContentType() {
-		// TODO Auto-generated method stub
 		return "video/mp4";
 	}
 
 	@Override
 	public InputStream getInputStream() throws IOException {
-		// TODO Auto-generated method stub
 		return new java.io.FileInputStream(file);
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return file.getName();
 	}
 
 	@Override
 	public OutputStream getOutputStream() throws IOException {
-		// TODO Auto-generated method stub
 		throw new IOException();
 	}
 

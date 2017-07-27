@@ -1,3 +1,6 @@
+/**
+ * (c) 2003-2017 MMT, Inc. The software in this package is published under the terms of the Commercial Free Software license V.1, a copy of which has been included with this distribution in the LICENSE.md file.
+ */
 package org.mule.modules.wechat.config;
 
 import org.mule.api.annotations.components.Configuration;
@@ -36,7 +39,8 @@ public class ConnectorConfig {
 
 	/**
      * Get Verify Url token
-     */
+	 * @return Token set by the developer on the WeChat Official Account Admin Platform
+	 */
 	public String getToken() {
 		return token;
 	}
@@ -52,6 +56,8 @@ public class ConnectorConfig {
 
 	/**
      * Get Wechat account appId
+     * 
+     * @return The unique certificate of a official account
      */
 	public String getAppId() {
 		return appId;
@@ -68,6 +74,8 @@ public class ConnectorConfig {
 
 	/**
      * Get Wechat account appSecret
+     * 
+     * @return The key of a official account's certificate
      */
 	public String getAppSecret() {
 		return appSecret;
@@ -82,10 +90,20 @@ public class ConnectorConfig {
 		this.appSecret = appSecret;
 	}
 
+	/**
+	 * Get If they want to self manage access token
+	 * 
+	 * @return Boolean
+	 */
 	public Boolean getSelfManageAccessToken() {
 		return selfManageAccessToken;
 	}
 
+	/**
+	 * Set If they want to self manage access token
+	 * 
+	 * @param selfManageAccessToken Boolean
+	 */
 	public void setSelfManageAccessToken(Boolean selfManageAccessToken) {
 		this.selfManageAccessToken = selfManageAccessToken;
 	}

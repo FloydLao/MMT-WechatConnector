@@ -14,9 +14,9 @@
 *Additional Info*
 [width="50", cols=".<60%,^40%" ]
 |======================
-| Requires Mule Enterprise License |  No icon:remove[]  {nbsp}
+| Requires Mule Enterprise License |  Yes icon:star[]  {nbsp}
 | Requires Entitlement |  No icon:remove[]  {nbsp}
-| Mule Version | 3.5.0 or higher
+| Mule Version | 3.8.0 or higher
 |======================
 
 
@@ -55,7 +55,7 @@
 
 +++
 Verify validity of the URL
-</br>http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL">http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL</a>
 +++
 
 
@@ -87,110 +87,6 @@ uri  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.htm
 
 ---
 
-=== Message decryption
-`<wechat:message-decryption>`
-
-
-
-
-+++
-Authenticate message validity and obtain decrypted message.
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Implementation_Guide">http://admin.wechat.com/wiki/index.php?title=Implementation_Guide</a>
-+++
-
-
-    
-            
-==== Attributes
-[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
-|======================
-|Name |Java Type | Description | Default Value | Required
-| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
-
-
-
-| 
-encrytedXml icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Encryted message.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-encodingAesKey  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++EncodingAESKey set by the developer on the WeChat Official Account Admin Platform+++ |  | *x*{nbsp}
-
-
-
-
-| 
-uri  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++URI sent by WeChat Official Account Admin System+++ | #[message.inboundProperties.'http.request.uri'] | {nbsp}
-
-
-|======================
-
-==== Returns
-[cols=".^40%,.^60%", options="header"]
-|======================
-|Return Java Type | Description
-|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++String XML+++
-|======================
-
-
-
-
----
-
-=== Message encrytion
-`<wechat:message-encrytion>`
-
-
-
-
-+++
-Encrypt a reply message from an official account
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Implementation_Guide">http://admin.wechat.com/wiki/index.php?title=Implementation_Guide</a>
-+++
-
-
-    
-            
-==== Attributes
-[cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
-|======================
-|Name |Java Type | Description | Default Value | Required
-| config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
-
-
-
-| 
-replyXml icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Reply message from an official account+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-encodingAesKey  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++EncodingAESKey set by the developer on the WeChat Official Account Admin Platform+++ |  | *x*{nbsp}
-
-
-
-
-| 
-uri  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++URI sent by WeChat Official Account Admin System+++ | #[message.inboundProperties.'http.request.uri'] | {nbsp}
-
-
-|======================
-
-==== Returns
-[cols=".^40%,.^60%", options="header"]
-|======================
-|Return Java Type | Description
-|+++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++String XML+++
-|======================
-
-
-
-
----
-
 === Upload temporary image file
 `<wechat:upload-temporary-image-file>`
 
@@ -199,7 +95,7 @@ uri  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.htm
 
 +++
 Upload Temporary Image Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 +++
 
 
@@ -219,7 +115,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -250,7 +146,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Temporary Voice Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 +++
 
 
@@ -270,7 +166,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -301,7 +197,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Temporary Video Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 +++
 
 
@@ -321,7 +217,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -352,7 +248,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Temporary Thumb Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 +++
 
 
@@ -372,7 +268,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -403,7 +299,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Permanent Image Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 +++
 
 
@@ -429,7 +325,7 @@ title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.h
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -460,7 +356,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Permanent Voice Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 +++
 
 
@@ -486,7 +382,7 @@ title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.h
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -517,7 +413,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Permanent Video Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 +++
 
 
@@ -549,7 +445,7 @@ introduction  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/S
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -580,7 +476,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Upload Permanent Thumb Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 +++
 
 
@@ -606,7 +502,7 @@ title  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.h
 
 
 
-| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>+++ | #[payload] | {nbsp}
+| payload icon:envelope[] | +++Document+++ | *The current message payload is automatically transformed and injected to this parameter.* +++<br>Document+++ | #[payload] | {nbsp}
 
 
 
@@ -637,7 +533,7 @@ attachment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map
 
 +++
 Send Customer Text Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message</a>
 +++
 
 
@@ -689,7 +585,7 @@ content  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Customer Image Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message</a>
 +++
 
 
@@ -741,7 +637,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Customer Audio Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message</a>
 +++
 
 
@@ -793,7 +689,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Customer Video Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message</a>
 +++
 
 
@@ -851,7 +747,7 @@ thumbMediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/S
 
 +++
 Send Customer Music Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message</a>
 +++
 
 
@@ -928,7 +824,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 Upload Article Message Data
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data</a>
 +++
 
 
@@ -980,7 +876,7 @@ articles icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/
 
 +++
 Group-Based Broadcast Article
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 +++
 
 
@@ -1032,7 +928,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Group-Based Broadcast Text
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 +++
 
 
@@ -1084,7 +980,7 @@ content  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Group-Based Broadcast Voice
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 +++
 
 
@@ -1136,7 +1032,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Group-Based Broadcast Image
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 +++
 
 
@@ -1188,7 +1084,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Group-Based Broadcast Video
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 +++
 
 
@@ -1241,7 +1137,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 OpenID List-Based Broadcast Article
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 +++
 
 
@@ -1300,7 +1196,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 OpenID List-Based Broadcast Text
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 +++
 
 
@@ -1359,7 +1255,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 OpenID List-Based Broadcast Voice
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 +++
 
 
@@ -1418,7 +1314,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 OpenID List-Based Broadcast Image
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 +++
 
 
@@ -1477,7 +1373,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 OpenID List-Based Broadcast Video
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 +++
 
 
@@ -1498,7 +1394,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 | 
-mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++here is obtained on Basic Support->Transferring Multimedia Files+++ |  | *x*{nbsp}
+mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++here is obtained on Basic Support and then Transferring Multimedia Files+++ |  | *x*{nbsp}
 
 
 
@@ -1547,7 +1443,7 @@ toUser icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 
 +++
 Send Preview Broadcast Article to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 +++
 
 
@@ -1599,7 +1495,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Preview Broadcast Text to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 +++
 
 
@@ -1651,7 +1547,7 @@ content  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Preview Broadcast Voice to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 +++
 
 
@@ -1703,7 +1599,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Preview Broadcast Image to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 +++
 
 
@@ -1755,7 +1651,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Send Preview Broadcast Video to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 +++
 
 
@@ -1807,7 +1703,7 @@ mediaId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Query Message Sending Status
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status</a>
 +++
 
 
@@ -1853,7 +1749,7 @@ msgId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.h
 
 +++
 Get Follower List
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Follower_List">http://admin.wechat.com/wiki/index.php?title=Follower_List</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Follower_List">http://admin.wechat.com/wiki/index.php?title=Follower_List</a>
 +++
 
 
@@ -1899,7 +1795,7 @@ nextOpenId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 +++
 Get User Profile
-</br><a href="http://admin.wechat.com/wiki/index.php?title=User_Profile">http://admin.wechat.com/wiki/index.php?title=User_Profile</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=User_Profile">http://admin.wechat.com/wiki/index.php?title=User_Profile</a>
 +++
 
 
@@ -1951,7 +1847,7 @@ lang  | +++<a href="javadocs/org/mule/modules/wechat/WechatConnector/Lang.html">
 
 +++
 Create Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags</a>
 +++
 
 
@@ -1997,7 +1893,7 @@ tagName  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Query Tags
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags</a>
 +++
 
 
@@ -2037,7 +1933,7 @@ accessToken  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 +++
 Editing Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags</a>
 +++
 
 
@@ -2089,7 +1985,7 @@ tagName  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String
 
 +++
 Deleting Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags</a>
 +++
 
 
@@ -2135,7 +2031,7 @@ tagId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.
 
 +++
 Obtaining the List of Followers Configured with a Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag</a>
 +++
 
 
@@ -2188,7 +2084,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 Configuring Tags for Users in Batches
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches</a>
 +++
 
 
@@ -2247,7 +2143,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 UnTags for Users in Batches
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches</a>
 +++
 
 
@@ -2305,7 +2201,7 @@ openidList icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/ap
 
 +++
 Obtaining the List of Tags Configured for a User
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User</a>
 +++
 
 
@@ -2351,7 +2247,7 @@ openId  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.
 
 +++
 Set name remarks for specified users
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Name_Remarks">http://admin.wechat.com/wiki/index.php?title=Name_Remarks</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Name_Remarks">http://admin.wechat.com/wiki/index.php?title=Name_Remarks</a>
 +++
 
 
@@ -2403,7 +2299,7 @@ remark  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.
 
 +++
 Obtaining the Blacklist of an Official Account
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
 +++
 
 
@@ -2450,7 +2346,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 Blacklist Followers
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
 +++
 
 
@@ -2503,7 +2399,7 @@ icon:cloud[] {nbsp} DataSense enabled
 
 +++
 Unblacklist Followers
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
 +++
 
 
@@ -2560,7 +2456,7 @@ openidList icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/ap
 
 +++
 Get Access Token
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
 +++
 
 
@@ -2572,6 +2468,8 @@ Get Access Token
 |Name |Java Type | Description | Default Value | Required
 | config-ref | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | Specify which config to use | |*x*{nbsp}
 | callback | +++SourceCallback+++ | +++Hashmap+++ |  | *x*{nbsp}
+| otherAppId | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Other official account's AppID+++ |  | {nbsp}
+| otherAppSecret | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Other official account's AppSecret+++ |  | {nbsp}
 |======================
 
 ==== Returns

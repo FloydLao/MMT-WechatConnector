@@ -2091,8 +2091,6 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_processors">Processors</a>
 <ul class="sectlevel2">
 <li><a href="#_verify_url">Verify url</a></li>
-<li><a href="#_message_decryption">Message decryption</a></li>
-<li><a href="#_message_encrytion">Message encrytion</a></li>
 <li><a href="#_upload_temporary_image_file">Upload temporary image file</a></li>
 <li><a href="#_upload_temporary_voice_file">Upload temporary voice file</a></li>
 <li><a href="#_upload_temporary_video_file">Upload temporary video file</a></li>
@@ -2161,7 +2159,7 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requires Mule Enterprise License</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">No <span class="icon"><i class="fa fa-remove"></i></span>  &#160;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes <span class="icon"><i class="fa fa-star"></i></span>  &#160;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requires Entitlement</p></td>
@@ -2169,7 +2167,7 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mule Version</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">3.5.0 or higher</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3.8.0 or higher</p></td>
 </tr>
 </tbody>
 </table>
@@ -2260,7 +2258,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p>
 Verify validity of the URL
-</br>http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL">http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL</a>
 </p>
 </div>
 <div class="sect3">
@@ -2324,14 +2322,14 @@ Verify validity of the URL
 </div>
 </div>
 <div class="sect2">
-<h3 id="_message_decryption">Message decryption</h3>
+<h3 id="_upload_temporary_image_file">Upload temporary image file</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:message-decryption&gt;</code></p>
+<p><code>&lt;wechat:upload-temporary-image-file&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Authenticate message validity and obtain decrypted message.
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Implementation_Guide">http://admin.wechat.com/wiki/index.php?title=Implementation_Guide</a>
+Upload Temporary Image Material
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 </p>
 </div>
 <div class="sect3">
@@ -2362,24 +2360,24 @@ Authenticate message validity and obtain decrypted message.
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">encrytedXml <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Encryted message.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">encodingAesKey</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">EncodingAESKey set by the developer on the WeChat Official Account Admin Platform</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">uri</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">URI sent by WeChat Official Account Admin System</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[message.inboundProperties.'http.request.uri']</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">attachment</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Attached file</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">#[message.inboundAttachments]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2400,8 +2398,8 @@ Authenticate message validity and obtain decrypted message.
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">String XML</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">HashMap</p></td>
 </tr>
 </tbody>
 </table>
@@ -2409,14 +2407,14 @@ Authenticate message validity and obtain decrypted message.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_message_encrytion">Message encrytion</h3>
+<h3 id="_upload_temporary_voice_file">Upload temporary voice file</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:message-encrytion&gt;</code></p>
+<p><code>&lt;wechat:upload-temporary-voice-file&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Encrypt a reply message from an official account
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Implementation_Guide">http://admin.wechat.com/wiki/index.php?title=Implementation_Guide</a>
+Upload Temporary Voice Material
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 </p>
 </div>
 <div class="sect3">
@@ -2447,24 +2445,24 @@ Encrypt a reply message from an official account
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">replyXml <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Reply message from an official account</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">encodingAesKey</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">EncodingAESKey set by the developer on the WeChat Official Account Admin Platform</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">uri</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">URI sent by WeChat Official Account Admin System</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[message.inboundProperties.'http.request.uri']</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">attachment</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Attached file</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">#[message.inboundAttachments]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2485,8 +2483,8 @@ Encrypt a reply message from an official account
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">String XML</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">HashMap</p></td>
 </tr>
 </tbody>
 </table>
@@ -2494,14 +2492,14 @@ Encrypt a reply message from an official account
 </div>
 </div>
 <div class="sect2">
-<h3 id="_upload_temporary_image_file">Upload temporary image file</h3>
+<h3 id="_upload_temporary_video_file">Upload temporary video file</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:upload-temporary-image-file&gt;</code></p>
+<p><code>&lt;wechat:upload-temporary-video-file&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Upload Temporary Image Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+Upload Temporary Video Material
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 </p>
 </div>
 <div class="sect3">
@@ -2541,7 +2539,7 @@ Upload Temporary Image Material
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -2579,14 +2577,14 @@ Upload Temporary Image Material
 </div>
 </div>
 <div class="sect2">
-<h3 id="_upload_temporary_voice_file">Upload temporary voice file</h3>
+<h3 id="_upload_temporary_thumb_file">Upload temporary thumb file</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:upload-temporary-voice-file&gt;</code></p>
+<p><code>&lt;wechat:upload-temporary-thumb-file&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Upload Temporary Voice Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+Upload Temporary Thumb Material
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 </p>
 </div>
 <div class="sect3">
@@ -2626,7 +2624,7 @@ Upload Temporary Voice Material
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -2664,176 +2662,6 @@ Upload Temporary Voice Material
 </div>
 </div>
 <div class="sect2">
-<h3 id="_upload_temporary_video_file">Upload temporary video file</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:upload-temporary-video-file&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Upload Temporary Video Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_7">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">attachment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Attached file</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[message.inboundAttachments]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_6">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">HashMap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_upload_temporary_thumb_file">Upload temporary thumb file</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:upload-temporary-thumb-file&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Upload Temporary Thumb Material
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_8">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">attachment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,DataHandler></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Attached file</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[message.inboundAttachments]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_7">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">HashMap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_upload_permanent_image_file">Upload permanent image file</h3>
 <div class="paragraph">
 <p><code>&lt;wechat:upload-permanent-image-file&gt;</code></p>
@@ -2841,11 +2669,11 @@ Upload Temporary Thumb Material
 <div class="paragraph">
 <p>
 Upload Permanent Image Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_9">Attributes</h4>
+<h4 id="_attributes_7">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -2888,7 +2716,7 @@ Upload Permanent Image Material
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -2903,7 +2731,7 @@ Upload Permanent Image Material
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_8">Returns</h4>
+<h4 id="_returns_6">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -2933,11 +2761,11 @@ Upload Permanent Image Material
 <div class="paragraph">
 <p>
 Upload Permanent Voice Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_10">Attributes</h4>
+<h4 id="_attributes_8">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -2980,7 +2808,7 @@ Upload Permanent Voice Material
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -2995,7 +2823,7 @@ Upload Permanent Voice Material
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_9">Returns</h4>
+<h4 id="_returns_7">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3025,11 +2853,11 @@ Upload Permanent Voice Material
 <div class="paragraph">
 <p>
 Upload Permanent Video Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_11">Attributes</h4>
+<h4 id="_attributes_9">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3079,7 +2907,7 @@ Upload Permanent Video Material
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -3094,7 +2922,7 @@ Upload Permanent Video Material
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_10">Returns</h4>
+<h4 id="_returns_8">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3124,11 +2952,11 @@ Upload Permanent Video Material
 <div class="paragraph">
 <p>
 Upload Permanent Thumb Material
-</br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+<br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_12">Attributes</h4>
+<h4 id="_attributes_10">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3171,7 +2999,7 @@ Upload Permanent Thumb Material
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">payload <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>The current message payload is automatically transformed and injected to this parameter.</strong> <br>Document</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -3186,7 +3014,7 @@ Upload Permanent Thumb Material
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_11">Returns</h4>
+<h4 id="_returns_9">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3216,11 +3044,11 @@ Upload Permanent Thumb Material
 <div class="paragraph">
 <p>
 Send Customer Text Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_13">Attributes</h4>
+<h4 id="_attributes_11">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3271,7 +3099,7 @@ Send Customer Text Message to OpenId
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_12">Returns</h4>
+<h4 id="_returns_10">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3301,11 +3129,11 @@ Send Customer Text Message to OpenId
 <div class="paragraph">
 <p>
 Send Customer Image Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_14">Attributes</h4>
+<h4 id="_attributes_12">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3356,7 +3184,7 @@ Send Customer Image Message to OpenId
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_13">Returns</h4>
+<h4 id="_returns_11">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3386,11 +3214,11 @@ Send Customer Image Message to OpenId
 <div class="paragraph">
 <p>
 Send Customer Audio Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_15">Attributes</h4>
+<h4 id="_attributes_13">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3441,7 +3269,7 @@ Send Customer Audio Message to OpenId
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_14">Returns</h4>
+<h4 id="_returns_12">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3471,11 +3299,11 @@ Send Customer Audio Message to OpenId
 <div class="paragraph">
 <p>
 Send Customer Video Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_16">Attributes</h4>
+<h4 id="_attributes_14">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3533,7 +3361,7 @@ Send Customer Video Message to OpenId
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_15">Returns</h4>
+<h4 id="_returns_13">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3563,11 +3391,11 @@ Send Customer Video Message to OpenId
 <div class="paragraph">
 <p>
 Send Customer Music Message to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_17">Attributes</h4>
+<h4 id="_attributes_15">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3646,7 +3474,7 @@ Send Customer Music Message to OpenId
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_16">Returns</h4>
+<h4 id="_returns_14">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3679,11 +3507,11 @@ Send Customer Music Message to OpenId
 <div class="paragraph">
 <p>
 Upload Article Message Data
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_18">Attributes</h4>
+<h4 id="_attributes_16">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -3734,7 +3562,7 @@ Upload Article Message Data
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_17">Returns</h4>
+<h4 id="_returns_15">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -3764,7 +3592,177 @@ Upload Article Message Data
 <div class="paragraph">
 <p>
 Group-Based Broadcast Article
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+</p>
+</div>
+<div class="sect3">
+<h4 id="_attributes_17">Attributes</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Default Value</th>
+<th class="tableblock halign-center valign-middle">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">groupId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of any groups to be broadcast to</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_returns_16">Returns</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Return Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_based_broadcast_text">Group based broadcast text</h3>
+<div class="paragraph">
+<p><code>&lt;wechat:group-based-broadcast-text&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>
+Group-Based Broadcast Text
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+</p>
+</div>
+<div class="sect3">
+<h4 id="_attributes_18">Attributes</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Default Value</th>
+<th class="tableblock halign-center valign-middle">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">groupId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of any groups to be broadcast to</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">content</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Text content</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_returns_17">Returns</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Return Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_based_broadcast_voice">Group based broadcast voice</h3>
+<div class="paragraph">
+<p><code>&lt;wechat:group-based-broadcast-voice&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>
+Group-Based Broadcast Voice
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
@@ -3842,14 +3840,14 @@ Group-Based Broadcast Article
 </div>
 </div>
 <div class="sect2">
-<h3 id="_group_based_broadcast_text">Group based broadcast text</h3>
+<h3 id="_group_based_broadcast_image">Group based broadcast image</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:group-based-broadcast-text&gt;</code></p>
+<p><code>&lt;wechat:group-based-broadcast-image&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Group-Based Broadcast Text
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+Group-Based Broadcast Image
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
@@ -3894,9 +3892,9 @@ Group-Based Broadcast Text
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">content</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Text content</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
@@ -3927,14 +3925,14 @@ Group-Based Broadcast Text
 </div>
 </div>
 <div class="sect2">
-<h3 id="_group_based_broadcast_voice">Group based broadcast voice</h3>
+<h3 id="_group_based_broadcast_video">Group based broadcast video</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:group-based-broadcast-voice&gt;</code></p>
+<p><code>&lt;wechat:group-based-broadcast-video&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Group-Based Broadcast Voice
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+Group-Based Broadcast Video
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
@@ -4012,176 +4010,6 @@ Group-Based Broadcast Voice
 </div>
 </div>
 <div class="sect2">
-<h3 id="_group_based_broadcast_image">Group based broadcast image</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:group-based-broadcast-image&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Group-Based Broadcast Image
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_22">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">groupId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of any groups to be broadcast to</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_21">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_group_based_broadcast_video">Group based broadcast video</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:group-based-broadcast-video&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Group-Based Broadcast Video
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_23">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">groupId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of any groups to be broadcast to</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_22">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_open_id_list_broadcast_article">Open id list broadcast article</h3>
 <div class="paragraph">
 <p><code>&lt;wechat:open-id-list-broadcast-article&gt;</code></p>
@@ -4192,11 +4020,11 @@ Group-Based Broadcast Video
 <div class="paragraph">
 <p>
 OpenID List-Based Broadcast Article
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_24">Attributes</h4>
+<h4 id="_attributes_22">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -4254,7 +4082,7 @@ OpenID List-Based Broadcast Article
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_23">Returns</h4>
+<h4 id="_returns_21">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -4287,11 +4115,11 @@ OpenID List-Based Broadcast Article
 <div class="paragraph">
 <p>
 OpenID List-Based Broadcast Text
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_25">Attributes</h4>
+<h4 id="_attributes_23">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -4349,7 +4177,7 @@ OpenID List-Based Broadcast Text
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_24">Returns</h4>
+<h4 id="_returns_22">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -4382,11 +4210,11 @@ OpenID List-Based Broadcast Text
 <div class="paragraph">
 <p>
 OpenID List-Based Broadcast Voice
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_26">Attributes</h4>
+<h4 id="_attributes_24">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -4444,7 +4272,7 @@ OpenID List-Based Broadcast Voice
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_25">Returns</h4>
+<h4 id="_returns_23">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -4477,11 +4305,11 @@ OpenID List-Based Broadcast Voice
 <div class="paragraph">
 <p>
 OpenID List-Based Broadcast Image
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_27">Attributes</h4>
+<h4 id="_attributes_25">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -4539,7 +4367,7 @@ OpenID List-Based Broadcast Image
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_26">Returns</h4>
+<h4 id="_returns_24">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -4572,7 +4400,198 @@ OpenID List-Based Broadcast Image
 <div class="paragraph">
 <p>
 OpenID List-Based Broadcast Video
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+</p>
+</div>
+<div class="sect3">
+<h4 id="_attributes_26">Attributes</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Default Value</th>
+<th class="tableblock halign-center valign-middle">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">here is obtained on Basic Support and then Transferring Multimedia Files</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">title</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The title of the message</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The description of the message</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ApiName <span class="icon"><i class="fa fa-key"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID List Broadcast Video</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenIDListBroadcastVideo</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">toUser <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">List of Follower's openId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_returns_25">Returns</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Return Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preview_broadcast_article">Preview broadcast article</h3>
+<div class="paragraph">
+<p><code>&lt;wechat:preview-broadcast-article&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>
+Send Preview Broadcast Article to OpenId
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+</p>
+</div>
+<div class="sect3">
+<h4 id="_attributes_27">Attributes</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Default Value</th>
+<th class="tableblock halign-center valign-middle">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">toUser</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID of the message receiver visible by the official account</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_returns_26">Returns</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Return Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preview_broadcast_text">Preview broadcast text</h3>
+<div class="paragraph">
+<p><code>&lt;wechat:preview-broadcast-text&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>
+Send Preview Broadcast Text to OpenId
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 </p>
 </div>
 <div class="sect3">
@@ -4610,39 +4629,18 @@ OpenID List-Based Broadcast Video
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">toUser</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">here is obtained on Basic Support->Transferring Multimedia Files</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID of the message receiver visible by the official account</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">title</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">content</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The title of the message</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Text content</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">description</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The description of the message</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ApiName <span class="icon"><i class="fa fa-key"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID List Broadcast Video</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenIDListBroadcastVideo</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">toUser <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">List of Follower's openId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
 </table>
@@ -4671,14 +4669,14 @@ OpenID List-Based Broadcast Video
 </div>
 </div>
 <div class="sect2">
-<h3 id="_preview_broadcast_article">Preview broadcast article</h3>
+<h3 id="_preview_broadcast_voice">Preview broadcast voice</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:preview-broadcast-article&gt;</code></p>
+<p><code>&lt;wechat:preview-broadcast-voice&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Send Preview Broadcast Article to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+Send Preview Broadcast Voice to OpenId
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 </p>
 </div>
 <div class="sect3">
@@ -4756,14 +4754,14 @@ Send Preview Broadcast Article to OpenId
 </div>
 </div>
 <div class="sect2">
-<h3 id="_preview_broadcast_text">Preview broadcast text</h3>
+<h3 id="_preview_broadcast_image">Preview broadcast image</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:preview-broadcast-text&gt;</code></p>
+<p><code>&lt;wechat:preview-broadcast-image&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Send Preview Broadcast Text to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+Send Preview Broadcast Image to OpenId
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 </p>
 </div>
 <div class="sect3">
@@ -4808,9 +4806,9 @@ Send Preview Broadcast Text to OpenId
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">content</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Text content</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
@@ -4841,14 +4839,14 @@ Send Preview Broadcast Text to OpenId
 </div>
 </div>
 <div class="sect2">
-<h3 id="_preview_broadcast_voice">Preview broadcast voice</h3>
+<h3 id="_preview_broadcast_video">Preview broadcast video</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:preview-broadcast-voice&gt;</code></p>
+<p><code>&lt;wechat:preview-broadcast-video&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Send Preview Broadcast Voice to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+Send Preview Broadcast Video to OpenId
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
 </p>
 </div>
 <div class="sect3">
@@ -4926,176 +4924,6 @@ Send Preview Broadcast Voice to OpenId
 </div>
 </div>
 <div class="sect2">
-<h3 id="_preview_broadcast_image">Preview broadcast image</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:preview-broadcast-image&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Send Preview Broadcast Image to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_32">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">toUser</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID of the message receiver visible by the official account</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_31">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_preview_broadcast_video">Preview broadcast video</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:preview-broadcast-video&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Send Preview Broadcast Video to OpenId
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_33">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">toUser</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID of the message receiver visible by the official account</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">mediaId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">ID of the message to be broadcast</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_32">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_query_broadcast_status">Query broadcast status</h3>
 <div class="paragraph">
 <p><code>&lt;wechat:query-broadcast-status&gt;</code></p>
@@ -5103,11 +4931,11 @@ Send Preview Broadcast Video to OpenId
 <div class="paragraph">
 <p>
 Query Message Sending Status
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_34">Attributes</h4>
+<h4 id="_attributes_32">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5151,7 +4979,7 @@ Query Message Sending Status
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_33">Returns</h4>
+<h4 id="_returns_31">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5181,11 +5009,11 @@ Query Message Sending Status
 <div class="paragraph">
 <p>
 Get Follower List
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Follower_List">http://admin.wechat.com/wiki/index.php?title=Follower_List</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Follower_List">http://admin.wechat.com/wiki/index.php?title=Follower_List</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_35">Attributes</h4>
+<h4 id="_attributes_33">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5229,7 +5057,7 @@ Get Follower List
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_34">Returns</h4>
+<h4 id="_returns_32">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5259,11 +5087,11 @@ Get Follower List
 <div class="paragraph">
 <p>
 Get User Profile
-</br><a href="http://admin.wechat.com/wiki/index.php?title=User_Profile">http://admin.wechat.com/wiki/index.php?title=User_Profile</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=User_Profile">http://admin.wechat.com/wiki/index.php?title=User_Profile</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_36">Attributes</h4>
+<h4 id="_attributes_34">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5314,7 +5142,7 @@ Get User Profile
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_35">Returns</h4>
+<h4 id="_returns_33">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5344,7 +5172,156 @@ Get User Profile
 <div class="paragraph">
 <p>
 Create Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags</a>
+</p>
+</div>
+<div class="sect3">
+<h4 id="_attributes_35">Attributes</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Default Value</th>
+<th class="tableblock halign-center valign-middle">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">tagName</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Tag name (up to 30 characters)</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_returns_34">Returns</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Return Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_query_tags">Query tags</h3>
+<div class="paragraph">
+<p><code>&lt;wechat:query-tags&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>
+Query Tags
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags</a>
+</p>
+</div>
+<div class="sect3">
+<h4 id="_attributes_36">Attributes</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Default Value</th>
+<th class="tableblock halign-center valign-middle">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_returns_35">Returns</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Return Java Type</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_editing_tag">Editing tag</h3>
+<div class="paragraph">
+<p><code>&lt;wechat:editing-tag&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>
+Editing Tag
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags</a>
 </p>
 </div>
 <div class="sect3">
@@ -5382,6 +5359,13 @@ Create Tag
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">tagId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Tag ID</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">tagName</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Tag name (up to 30 characters)</p></td>
@@ -5415,14 +5399,14 @@ Create Tag
 </div>
 </div>
 <div class="sect2">
-<h3 id="_query_tags">Query tags</h3>
+<h3 id="_deleting_tag">Deleting tag</h3>
 <div class="paragraph">
-<p><code>&lt;wechat:query-tags&gt;</code></p>
+<p><code>&lt;wechat:deleting-tag&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>
-Query Tags
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags</a>
+Deleting Tag
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags</a>
 </p>
 </div>
 <div class="sect3">
@@ -5459,174 +5443,18 @@ Query Tags
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">tagId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Tag ID</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_returns_37">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_editing_tag">Editing tag</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:editing-tag&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Editing Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_39">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">tagId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Tag ID</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">tagName</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Tag name (up to 30 characters)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_38">Returns</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 40%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Return Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html">Map</a><<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">Object</a>></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Hashmap</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_deleting_tag">Deleting tag</h3>
-<div class="paragraph">
-<p><code>&lt;wechat:deleting-tag&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>
-Deleting Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags</a>
-</p>
-</div>
-<div class="sect3">
-<h4 id="_attributes_40">Attributes</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 35%;">
-<col style="width: 20%;">
-<col style="width: 5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Java Type</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Default Value</th>
-<th class="tableblock halign-center valign-middle">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">config-ref</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Specify which config to use</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">accessToken</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">tagId</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Tag ID</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_returns_39">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5656,11 +5484,11 @@ Deleting Tag
 <div class="paragraph">
 <p>
 Obtaining the List of Followers Configured with a Tag
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_41">Attributes</h4>
+<h4 id="_attributes_39">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5711,7 +5539,7 @@ Obtaining the List of Followers Configured with a Tag
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_40">Returns</h4>
+<h4 id="_returns_38">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5744,11 +5572,11 @@ Obtaining the List of Followers Configured with a Tag
 <div class="paragraph">
 <p>
 Configuring Tags for Users in Batches
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_42">Attributes</h4>
+<h4 id="_attributes_40">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5806,7 +5634,7 @@ Configuring Tags for Users in Batches
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_41">Returns</h4>
+<h4 id="_returns_39">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5839,11 +5667,11 @@ Configuring Tags for Users in Batches
 <div class="paragraph">
 <p>
 UnTags for Users in Batches
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_43">Attributes</h4>
+<h4 id="_attributes_41">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5901,7 +5729,7 @@ UnTags for Users in Batches
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_42">Returns</h4>
+<h4 id="_returns_40">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -5931,11 +5759,11 @@ UnTags for Users in Batches
 <div class="paragraph">
 <p>
 Obtaining the List of Tags Configured for a User
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_44">Attributes</h4>
+<h4 id="_attributes_42">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -5979,7 +5807,7 @@ Obtaining the List of Tags Configured for a User
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_43">Returns</h4>
+<h4 id="_returns_41">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -6009,11 +5837,11 @@ Obtaining the List of Tags Configured for a User
 <div class="paragraph">
 <p>
 Set name remarks for specified users
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Name_Remarks">http://admin.wechat.com/wiki/index.php?title=Name_Remarks</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Name_Remarks">http://admin.wechat.com/wiki/index.php?title=Name_Remarks</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_45">Attributes</h4>
+<h4 id="_attributes_43">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -6064,7 +5892,7 @@ Set name remarks for specified users
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_44">Returns</h4>
+<h4 id="_returns_42">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -6094,11 +5922,11 @@ Set name remarks for specified users
 <div class="paragraph">
 <p>
 Obtaining the Blacklist of an Official Account
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_46">Attributes</h4>
+<h4 id="_attributes_44">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -6142,7 +5970,7 @@ Obtaining the Blacklist of an Official Account
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_45">Returns</h4>
+<h4 id="_returns_43">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -6175,11 +6003,11 @@ Obtaining the Blacklist of an Official Account
 <div class="paragraph">
 <p>
 Blacklist Followers
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_47">Attributes</h4>
+<h4 id="_attributes_45">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -6230,7 +6058,7 @@ Blacklist Followers
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_46">Returns</h4>
+<h4 id="_returns_44">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -6263,11 +6091,11 @@ Blacklist Followers
 <div class="paragraph">
 <p>
 Unblacklist Followers
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_48">Attributes</h4>
+<h4 id="_attributes_46">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -6318,7 +6146,7 @@ Unblacklist Followers
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_47">Returns</h4>
+<h4 id="_returns_45">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">
@@ -6353,11 +6181,11 @@ Unblacklist Followers
 <div class="paragraph">
 <p>
 Get Access Token
-</br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
+<br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
 </p>
 </div>
 <div class="sect3">
-<h4 id="_attributes_49">Attributes</h4>
+<h4 id="_attributes_47">Attributes</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -6390,11 +6218,25 @@ Get Access Token
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">otherAppId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Other official account's AppID</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">otherAppSecret</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Other official account's AppSecret</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_returns_48">Returns</h4>
+<h4 id="_returns_46">Returns</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 40%;">

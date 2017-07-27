@@ -1,3 +1,6 @@
+/**
+ * (c) 2003-2017 MMT, Inc. The software in this package is published under the terms of the Commercial Free Software license V.1, a copy of which has been included with this distribution in the LICENSE.md file.
+ */
 package org.mule.modules.wechat;
 
 import java.util.Map;
@@ -98,10 +101,11 @@ public class WechatConnector {
    
     /**
      * Verify validity of the URL
-     * </br>http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL">http://admin.wechat.com/wiki/index.php?title=Getting_Started#Step_2._Verify_validity_of_the_URL</a>
      * 
      * @param uri URI sent by WeChat Official Account Admin System
      * @return The developer's backend system should return the echostr parameter value indicating that the request has been successfully received
+     * @throws Exception If anything fails
      */
     @Processor
     public Object verifyUrl(@Default("#[message.inboundProperties.'http.request.uri']") String uri) throws Exception {
@@ -124,92 +128,14 @@ public class WechatConnector {
     }
     
     /**
-     * Authenticate message validity and obtain decrypted message.
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Implementation_Guide">http://admin.wechat.com/wiki/index.php?title=Implementation_Guide</a>
-     * 
-     * @param encrytedXml Encryted message.
-     * @param encodingAesKey EncodingAESKey set by the developer on the WeChat Official Account Admin Platform
-     * @param uri URI sent by WeChat Official Account Admin System
-     * @return String XML
-     * @throws Exception
-     */
-    @Processor
-    public String messageDecryption(@Default("#[payload]") String encrytedXml, String encodingAesKey, @Default("#[message.inboundProperties.'http.request.uri']") String uri) throws Exception {
-    	String result = new String(encrytedXml);
-    	
-    	// Tools to read Wechat XML message
-    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		StringReader sr = new StringReader(result);
-		InputSource is = new InputSource(sr);
-		WXBizMsgCrypt pc = new WXBizMsgCrypt(config.getToken(), encodingAesKey, config.getAppId());
-		MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUri(new URI(uri)).build().getQueryParams();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document document = db.parse(is);
-		
-		// Get encrypted message
-		Element root = document.getDocumentElement();
-		NodeList nodelist1 = root.getElementsByTagName("Encrypt");
-
-		// Decrypt message
-		if (nodelist1.getLength() > 0) {
-			String encrypt = nodelist1.item(0).getTextContent();
-			String format = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><Encrypt><![CDATA[%1$s]]></Encrypt></xml>";
-			String fromXML = String.format(format, encrypt);
-
-			if (parameters.containsKey("msg_signature") && parameters.containsKey("timestamp") && parameters.containsKey("nonce")) {
-				try {
-					result = pc.decryptMsg(parameters.get("msg_signature").get(0), parameters.get("timestamp").get(0), parameters.get("nonce").get(0), fromXML);
-				} catch (AesException e) {
-					logger.error(e);
-				}
-			}
-		}
-    	
-        return result;
-    }
-    
-    /**
-     * Encrypt a reply message from an official account
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Implementation_Guide">http://admin.wechat.com/wiki/index.php?title=Implementation_Guide</a>
-     * 
-     * @param replyXml Reply message from an official account
-     * @param encodingAesKey EncodingAESKey set by the developer on the WeChat Official Account Admin Platform
-     * @param uri URI sent by WeChat Official Account Admin System
-     * @return String XML
-     */
-    @Processor
-    public String messageEncrytion(@Default("#[payload]") String replyXml, String encodingAesKey, @Default("#[message.inboundProperties.'http.request.uri']") String uri) throws Exception {
-    	String result = new String(replyXml);
-    	// Remove <?xml version='1.0' encoding='windows-1252'?>
-    	String[] arr = result.split("<xml>");
-    	if (arr.length > 1) {
-    		result = "<xml>" + arr[1];
-    	}
-    	
-    	// Tools to encrypt XML message
-    	WXBizMsgCrypt pc = new WXBizMsgCrypt(config.getToken(), encodingAesKey, config.getAppId());
-    	MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUri(new URI(uri)).build().getQueryParams();
-		
-    	// Encrypt message
-		if (parameters.containsKey("timestamp") && parameters.containsKey("nonce")) {
-			try {
-				result = pc.encryptMsg(result, parameters.get("timestamp").get(0), parameters.get("nonce").get(0));
-			} catch (AesException e) {
-				logger.error(e);
-			}
-		}
-    	
-        return result;
-    }
-    
-    /**
      * Upload Temporary Image Material
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadTemporaryImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -232,12 +158,13 @@ public class WechatConnector {
     
     /**
      * Upload Temporary Voice Material
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadTemporaryVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -260,12 +187,13 @@ public class WechatConnector {
     
     /**
      * Upload Temporary Video Material
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadTemporaryVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -288,12 +216,13 @@ public class WechatConnector {
     
     /**
      * Upload Temporary Thumb Material
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files">http://admin.wechat.com/wiki/index.php?title=Transferring_Multimedia_Files</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadTemporaryThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -316,13 +245,14 @@ public class WechatConnector {
     
     /**
      * Upload Permanent Image Material
-     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+     * <br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param title The title of this image.
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadPermanentImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -345,13 +275,14 @@ public class WechatConnector {
     
     /**
      * Upload Permanent Voice Material
-     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+     * <br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param title The title of this voice.
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadPermanentVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -374,14 +305,15 @@ public class WechatConnector {
     
     /**
      * Upload Permanent Video Material
-     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+     * <br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param title The title of this video.
      * @param introduction A description for this video.
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadPermanentVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, String introduction, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -404,13 +336,14 @@ public class WechatConnector {
     
     /**
      * Upload Permanent Thumb Material
-     * </br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
+     * <br><a href="http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset">http://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/oa/asset-management/upload-perm-asset#asset-management_upload-perm-asset</a>
 	 *
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param title The title of this thumb.
+     * @param payload Document
      * @param attachment Attached file
      * @return HashMap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadPermanentThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
@@ -433,13 +366,13 @@ public class WechatConnector {
     
     /**
      * Send Customer Text Message to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Text_Message</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
      * @param content Text Message
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> customerTextMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String content) throws Exception {
@@ -467,13 +400,13 @@ public class WechatConnector {
     
     /**
      * Send Customer Image Message to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Image_Message</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
      * @param mediaId Image Materials' mediaId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> customerImageMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String mediaId) throws Exception {
@@ -501,13 +434,13 @@ public class WechatConnector {
     
     /**
      * Send Customer Audio Message to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Audio_Message</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
      * @param mediaId Audio Materials' mediaId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> customerAudioMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String mediaId) throws Exception {
@@ -535,14 +468,14 @@ public class WechatConnector {
     
     /**
      * Send Customer Video Message to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Video_Message</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
      * @param mediaId Video Materials' mediaId
      * @param thumbMediaId Video Materials' thumbMediaId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> customerVideoMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String mediaId, String thumbMediaId) throws Exception {
@@ -571,7 +504,7 @@ public class WechatConnector {
     
     /**
      * Send Customer Music Message to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message">http://admin.wechat.com/wiki/index.php?title=Customer_Service_Messages#Music_Message</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
@@ -581,7 +514,7 @@ public class WechatConnector {
      * @param hqMusicUrl High-quality URL that WeChat accesses on WiFi
      * @param thumbMediaId The media ID of the thumb
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> customerMusicMessage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String title, String description, String musicUrl, String hqMusicUrl, String thumbMediaId) throws Exception {
@@ -613,13 +546,13 @@ public class WechatConnector {
     
     /**
      * Upload Article Message Data
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Upload_Article_Message_Data</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param ApiName Upload Article Message Data
      * @param articles Articles of Upload Article Message Data API
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> uploadArticleMessageData(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @MetaDataKeyParam @Default("UploadArticleMessageData") String ApiName, @Default("#[payload]") List<Map<String,Object>> articles) throws Exception {
@@ -655,13 +588,13 @@ public class WechatConnector {
     
     /**
      * Group-Based Broadcast Article
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param groupId ID of any groups to be broadcast to
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> groupBasedBroadcastArticle(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
@@ -691,13 +624,13 @@ public class WechatConnector {
     
     /**
      * Group-Based Broadcast Text
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param groupId ID of any groups to be broadcast to
      * @param content Text content
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> groupBasedBroadcastText(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String content) throws Exception {
@@ -727,13 +660,13 @@ public class WechatConnector {
     
     /**
      * Group-Based Broadcast Voice
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param groupId ID of any groups to be broadcast to
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> groupBasedBroadcastVoice(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
@@ -763,13 +696,13 @@ public class WechatConnector {
     
     /**
      * Group-Based Broadcast Image
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param groupId ID of any groups to be broadcast to
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> groupBasedBroadcastImage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
@@ -799,13 +732,13 @@ public class WechatConnector {
     
     /**
      * Group-Based Broadcast Video
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Group-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param groupId ID of any groups to be broadcast to
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> groupBasedBroadcastVideo(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String groupId, String mediaId) throws Exception {
@@ -835,14 +768,14 @@ public class WechatConnector {
     
     /**
      * OpenID List-Based Broadcast Article
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param mediaId ID of the message to be broadcast
      * @param ApiName OpenID List Broadcast Article
      * @param toUser List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> openIdListBroadcastArticle(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, @MetaDataKeyParam @Default("OpenIDListBroadcastArticle") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
@@ -872,14 +805,14 @@ public class WechatConnector {
     
     /**
      * OpenID List-Based Broadcast Text
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param content Text content
      * @param ApiName OpenID List Broadcast Text
      * @param toUser List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> openIdListBroadcastText(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String content, @MetaDataKeyParam @Default("OpenIDListBroadcastText") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
@@ -909,14 +842,14 @@ public class WechatConnector {
     
     /**
      * OpenID List-Based Broadcast Voice
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param mediaId ID of the message to be broadcast
      * @param ApiName OpenID List Broadcast Voice
      * @param toUser List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> openIdListBroadcastVoice(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, @MetaDataKeyParam @Default("OpenIDListBroadcastVoice") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
@@ -946,14 +879,14 @@ public class WechatConnector {
     
     /**
      * OpenID List-Based Broadcast Image
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param mediaId ID of the message to be broadcast
      * @param ApiName OpenID List Broadcast Image
      * @param toUser List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> openIdListBroadcastImage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, @MetaDataKeyParam @Default("OpenIDListBroadcastImage") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
@@ -983,16 +916,16 @@ public class WechatConnector {
     
     /**
      * OpenID List-Based Broadcast Video
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#OpenID_List-Based_Broadcast</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
-     * @param mediaId here is obtained on Basic Support->Transferring Multimedia Files
+     * @param mediaId here is obtained on Basic Support and then Transferring Multimedia Files
      * @param title The title of the message
      * @param description The description of the message
      * @param ApiName OpenID List Broadcast Video
      * @param toUser List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> openIdListBroadcastVideo(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String mediaId, String title, String description, @MetaDataKeyParam @Default("OpenIDListBroadcastVideo") String ApiName, @Default("#[payload]") Map<String, Object> toUser) throws Exception {
@@ -1024,13 +957,13 @@ public class WechatConnector {
     
     /**
      * Send Preview Broadcast Article to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param toUser OpenID of the message receiver visible by the official account
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> previewBroadcastArticle(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
@@ -1058,13 +991,13 @@ public class WechatConnector {
     
     /**
      * Send Preview Broadcast Text to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param toUser OpenID of the message receiver visible by the official account
      * @param content Text content
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> previewBroadcastText(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String content) throws Exception {
@@ -1092,13 +1025,13 @@ public class WechatConnector {
     
     /**
      * Send Preview Broadcast Voice to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param toUser OpenID of the message receiver visible by the official account
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> previewBroadcastVoice(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
@@ -1126,13 +1059,13 @@ public class WechatConnector {
     
     /**
      * Send Preview Broadcast Image to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param toUser OpenID of the message receiver visible by the official account
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> previewBroadcastImage(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
@@ -1160,13 +1093,13 @@ public class WechatConnector {
     
     /**
      * Send Preview Broadcast Video to OpenId
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Preview_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param toUser OpenID of the message receiver visible by the official account
      * @param mediaId ID of the message to be broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> previewBroadcastVideo(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String toUser, String mediaId) throws Exception {
@@ -1194,12 +1127,12 @@ public class WechatConnector {
     
     /**
      * Query Message Sending Status
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status">http://admin.wechat.com/wiki/index.php?title=Advanced_Broadcast_Interface#Query_Message_Sending_Status</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param msgId Message ID returned after a message is broadcast
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> queryBroadcastStatus(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String msgId) throws Exception {
@@ -1223,12 +1156,12 @@ public class WechatConnector {
     
     /**
      * Get Follower List
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Follower_List">http://admin.wechat.com/wiki/index.php?title=Follower_List</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Follower_List">http://admin.wechat.com/wiki/index.php?title=Follower_List</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param nextOpenId The first OpenID to be loaded. Load from the first follower if it is empty
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> getFollowerList(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Optional String nextOpenId) throws Exception {
@@ -1247,13 +1180,13 @@ public class WechatConnector {
     
     /**
      * Get User Profile
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=User_Profile">http://admin.wechat.com/wiki/index.php?title=User_Profile</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=User_Profile">http://admin.wechat.com/wiki/index.php?title=User_Profile</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Unique user ID for the official account
      * @param lang zh_CN: Simplified Chinese, zh_TW: Traditional Chinese, en: English
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> getUserProfile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, @Default("en") Lang lang) throws Exception {
@@ -1272,12 +1205,12 @@ public class WechatConnector {
     
     /**
      * Create Tag
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Create_Tags</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param tagName Tag name (up to 30 characters)
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> createTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String tagName) throws Exception {
@@ -1303,11 +1236,11 @@ public class WechatConnector {
     
     /**
      * Query Tags
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Query_Tags</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> queryTags(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken) throws Exception {
@@ -1326,13 +1259,13 @@ public class WechatConnector {
     
     /**
      * Editing Tag
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Editing_Tags</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param tagId Tag ID
      * @param tagName Tag name (up to 30 characters)
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> editingTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, Integer tagId, String tagName) throws Exception {
@@ -1359,12 +1292,12 @@ public class WechatConnector {
     
     /**
      * Deleting Tag
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Deleting_Tags</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param tagId Tag ID
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> deletingTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, Integer tagId) throws Exception {
@@ -1390,13 +1323,13 @@ public class WechatConnector {
     
     /**
      * Obtaining the List of Followers Configured with a Tag
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Followers_Configured_with_a_Tag</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param tagId Tag ID
      * @param nextOpenId Next Open ID
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> obtainFollowersWithTag(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, Integer tagId, @Optional String nextOpenId) throws Exception {
@@ -1423,14 +1356,14 @@ public class WechatConnector {
     
     /**
      * Configuring Tags for Users in Batches
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Configuring_Tags_for_Users_in_Batches</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param tagId Tag Id
      * @param ApiName Batch Tag Followers
      * @param openidList List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> batchTagFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Placement(order = 1) Integer tagId, @MetaDataKeyParam @Default("BatchTagFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
@@ -1457,14 +1390,14 @@ public class WechatConnector {
     
     /**
      * UnTags for Users in Batches
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Canceling_Tags_for_Users_in_Batches</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param tagId Tag Id
      * @param ApiName Batch Untag Followers
      * @param openidList List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> batchUntagFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Placement(order = 1) Integer tagId, @MetaDataKeyParam @Default("BatchUntagFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
@@ -1491,12 +1424,12 @@ public class WechatConnector {
     
     /**
      * Obtaining the List of Tags Configured for a User
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User">http://admin.wechat.com/wiki/index.php?title=Tag_Management_API#Obtaining_the_List_of_Tags_Configured_for_a_User</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> obtainFollowerTags(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId) throws Exception {
@@ -1520,13 +1453,13 @@ public class WechatConnector {
     
     /**
      * Set name remarks for specified users
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Name_Remarks">http://admin.wechat.com/wiki/index.php?title=Name_Remarks</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Name_Remarks">http://admin.wechat.com/wiki/index.php?title=Name_Remarks</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param openId Follower's openId
      * @param remark New name remark, less than 30 characters.
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> nameRemark(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String openId, String remark) throws Exception {
@@ -1551,12 +1484,12 @@ public class WechatConnector {
     
     /**
      * Obtaining the Blacklist of an Official Account
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param beginOpenId The first OpenID to be loaded. Load from the first follower if it is empty
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> obtainBlacklist(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Optional String beginOpenId) throws Exception {
@@ -1580,13 +1513,13 @@ public class WechatConnector {
     
     /**
      * Blacklist Followers
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param ApiName Blacklist Followers
      * @param openidList List of Follower's openId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> blacklistFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @MetaDataKeyParam @Default("BlacklistFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
@@ -1612,13 +1545,13 @@ public class WechatConnector {
     
     /**
      * Unblacklist Followers
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API">http://admin.wechat.com/wiki/index.php?title=Blacklist_Management_API</a>
      * 
      * @param accessToken The certificate for the calling API. Mandatory if "Self Manage Access Token" config is true
      * @param ApiName Unblacklist Followers
      * @param openidList List of Follower's OpenId
      * @return Hashmap
-     * @throws Exception
+     * @throws Exception If anything fails
      */
     @Processor
     public Map<String, Object> unblacklistFollowers(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @MetaDataKeyParam @Default("UnblacklistFollowers") String ApiName, @Default("#[payload]") Map<String, Object> openidList) throws Exception {
@@ -1644,11 +1577,11 @@ public class WechatConnector {
 
     /**
      * Get Access Token
-     * </br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
+     * <br><a href="http://admin.wechat.com/wiki/index.php?title=Access_token">http://admin.wechat.com/wiki/index.php?title=Access_token</a>
      * 
      * @param callback Hashmap
-     * @param appId Other official account's AppID
-     * @param appSecret Other official account's AppSecret
+     * @param otherAppId Other official account's AppID
+     * @param otherAppSecret Other official account's AppSecret
      * @throws Exception error produced while processing the payload
      */
     @Source(sourceStrategy = SourceStrategy.POLLING,pollingPeriod=6600000)
