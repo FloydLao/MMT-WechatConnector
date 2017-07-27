@@ -21,7 +21,7 @@ link:/wechat-connector[Wechat Connector User Guide]
 Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.8/connector-x[Connector X User Guide]
 ////
 
-== V1.0 - 2017/05/04
+== V1.0 - 2017 July 27
 ////
 <Connector_Version> : Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release]
 <Release_date> : The date on which the connector is released (not when the notes are written, mind you)
