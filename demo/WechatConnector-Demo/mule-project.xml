@@ -2,9 +2,5 @@
 <mule-project xmlns="http://www.mulesoft.com/tooling/project" runtimeId="org.mule.tooling.server.3.8.3.ee" schemaVersion="5.3.0.0">
     <name>wechat-demo</name>
     <description></description>
-    <muleExtension name="Wechat" qualifier="org.mule.tooling.ui.contribution.wechat.3.5.0"/>
-    <muleExtension name="Facebook" qualifier="org.mule.tooling.ui.contribution.facebook.3.5.0"/>
-    <muleExtension name="Amazon SQS" qualifier="org.mule.tooling.ui.contribution.sqs.3.5.0"/>
-    <muleExtension name="Mongo DB" qualifier="org.mule.tooling.ui.contribution.mongo.3.5.0"/>
-    <muleExtension name="CMIS" qualifier="org.mule.tooling.ui.contribution.cmis.3.5.0"/>
+    <muleExtension name="Wechat" qualifier="org.mule.tooling.ui.contribution.wechat.3.8.0"/>
 </mule-project>

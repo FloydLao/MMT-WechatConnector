@@ -8,18 +8,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.activation.DataHandler;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
  
-import java.io.StringReader;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
@@ -42,8 +36,6 @@ import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.InboundAttachments;
 import org.mule.modules.wechat.common.HttpsConnection;
 import org.mule.modules.wechat.config.ConnectorConfig;
-import org.mule.modules.wechat.encrytion.AesException;
-import org.mule.modules.wechat.encrytion.WXBizMsgCrypt;
 import org.mule.modules.wechat.error.ErrorHandler;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
