@@ -14,12 +14,14 @@ import org.mule.modules.wechat.automation.functional.NameRemarkTestCases;
 import org.mule.modules.wechat.automation.functional.BatchTagFollowersTestCases;
 import org.mule.modules.wechat.automation.functional.BatchUntagFollowersTestCases;
 import org.mule.modules.wechat.automation.functional.BlacklistFollowersTestCases;
+import org.mule.modules.wechat.automation.functional.CreateTagFailTestCases;
 import org.mule.modules.wechat.automation.functional.CreateTagTestCases;
 import org.mule.modules.wechat.automation.functional.CustomerAudioMessageTestCases;
 import org.mule.modules.wechat.automation.functional.CustomerImageMessageTestCases;
 import org.mule.modules.wechat.automation.functional.CustomerMusicMessageTestCases;
 import org.mule.modules.wechat.automation.functional.CustomerTextMessageTestCases;
 import org.mule.modules.wechat.automation.functional.CustomerVideoMessageTestCases;
+import org.mule.modules.wechat.automation.functional.EditingTagFailTestCases;
 import org.mule.modules.wechat.automation.functional.EditingTagTestCases;
 import org.mule.modules.wechat.automation.functional.DeletingTagTestCases;
 import org.mule.modules.wechat.automation.functional.GetFollowerListTestCases;
@@ -71,24 +73,8 @@ import org.mule.modules.wechat.automation.functional.UploadTemporaryVoiceFileTes
 	QueryTagsTestCases.class, UnblacklistFollowersTestCases.class, UploadArticleMessageDataTestCases.class, 
 	UploadPermanentImageFileTestCases.class, UploadPermanentThumbFileTestCases.class, UploadPermanentVideoFileTestCases.class, 
 	UploadPermanentVoiceFileTestCases.class, UploadTemporaryImageFileTestCases.class, UploadTemporaryThumbFileTestCases.class, 
-	UploadTemporaryVideoFileTestCases.class, UploadTemporaryVoiceFileTestCases.class, VerifyUrlTestCases.class  })
-
-//BatchTagFollowersTestCases.class, BatchUntagFollowersTestCases.class, BlacklistFollowersTestCases.class, 
-//CreateTagTestCases.class, CustomerAudioMessageTestCases.class, CustomerImageMessageTestCases.class, 
-//CustomerMusicMessageTestCases.class, CustomerTextMessageTestCases.class, CustomerVideoMessageTestCases.class, 
-//DeletingTagTestCases.class, EditingTagTestCases.class, GetFollowerListTestCases.class, 
-//GetUserProfileTestCases.class, GroupBasedBroadcastArticleTestCases.class, GroupBasedBroadcastImageTestCases.class, 
-//GroupBasedBroadcastTextTestCases.class, GroupBasedBroadcastVideoTestCases.class, GroupBasedBroadcastVoiceTestCases.class, 
-//#MessageDecryptionTestCases.class, #MessageEncrytionTestCases.class, NameRemarkTestCases.class, 
-//ObtainBlacklistTestCases.class, ObtainFollowersWithTagTestCases.class, ObtainFollowerTagsTestCases.class, 
-//OpenIdListBroadcastArticleTestCases.class, OpenIdListBroadcastImageTestCases.class, OpenIdListBroadcastTextTestCases.class, 
-//OpenIdListBroadcastVideoTestCases.class, OpenIdListBroadcastVoiceTestCases.class, PreviewBroadcastArticleTestCases.class, 
-//PreviewBroadcastImageTestCases.class, PreviewBroadcastTextTestCases.class, PreviewBroadcastVideoTestCases.class, 
-//PreviewBroadcastVoiceTestCases.class, QueryBroadcastStatusTestCases.class, QueryTagsTestCases.class, 
-//UnblacklistFollowersTestCases.class, UploadArticleMessageDataTestCases.class, UploadPermanentImageFileTestCases.class, 
-//UploadPermanentThumbFileTestCases.class, UploadPermanentVideoFileTestCases.class, UploadPermanentVoiceFileTestCases.class, 
-//UploadTemporaryImageFileTestCases.class, UploadTemporaryThumbFileTestCases.class, UploadTemporaryVideoFileTestCases.class, 
-//UploadTemporaryVoiceFileTestCases.class, VerifyUrlTestCases.class 
+	UploadTemporaryVideoFileTestCases.class, UploadTemporaryVoiceFileTestCases.class, VerifyUrlTestCases.class,
+	CreateTagFailTestCases.class, EditingTagFailTestCases.class })
 
 
 public class FunctionalTestSuite {
