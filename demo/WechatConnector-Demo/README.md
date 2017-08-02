@@ -30,7 +30,7 @@ Call http://localhost:8081/broadcast to send text broadcast to list of follower.
 
 * Example:{"errcode":0,"errmsg":"send job submission success","msg_id":3147484619}
 
-Use ./sample/UploadFile.html to send ./sample/thumb.jpg to http://localhost:8081/file.
+Go to folder ./sample and open UploadFile.html with browser, then select picture ./sample/thumb.jpg to submit.
 
 * Example:{"media_id":"t6Spy...","url":"http://mmbiz.qpic.cn/mmbiz_jpg/.../0?wx_fmt=jpeg"}
 
