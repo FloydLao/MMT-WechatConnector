@@ -15,6 +15,9 @@ import java.util.List;
 
 import org.w3c.dom.Document;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -132,7 +135,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadTemporaryImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
         		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=image";
@@ -161,7 +166,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadTemporaryVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
         		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=voice";
@@ -190,7 +197,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadTemporaryVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
 				httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=video";
@@ -219,7 +228,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadTemporaryThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
         		httpsURL = "http://file.api.wechat.com/cgi-bin/media/upload?access_token=" + WechatConnector.accessToken + "&type=thumb";
@@ -249,7 +260,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadPermanentImageFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
         		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=image";
@@ -279,7 +292,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadPermanentVoiceFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
         		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=voice";
@@ -310,7 +325,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadPermanentVideoFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, String introduction, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
 				httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=video";
@@ -340,7 +357,9 @@ public class WechatConnector {
     @Processor
     public Map<String, Object> uploadPermanentThumbFile(@Placement(tab="Advanced", group = "Advanced") @Optional String accessToken, String title, @Payload Document payload, @InboundAttachments("*") @Default("#[message.inboundAttachments]") Map<String, DataHandler> attachment) throws Exception {
     	String httpsURL = "";
-    	Map<String, Object> map = null;
+    	String content = "{\"errcode\":41005,\"errmsg\":\"media data missing hint: [j2rvRa0541e578]\"}";
+    	ObjectMapper mapper = new ObjectMapper();
+    	Map<String, Object> map = mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
     	if (attachment.size() > 0) {
     		if (!config.getSelfManageAccessToken()){
         		httpsURL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=" + WechatConnector.accessToken + "&type=thumb";
