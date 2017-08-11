@@ -1,0 +1,4 @@
+org.mule.modules.wechat
+org.mule.modules.wechat.common
+org.mule.modules.wechat.config
+org.mule.modules.wechat.error
